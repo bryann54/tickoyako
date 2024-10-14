@@ -5,17 +5,23 @@ part 'show_model.g.dart';
 @JsonSerializable()
 class ShowModel {
   final String id;
+  final String type;
+  final String imgUrl;
+  final String location;
   final String title;
   final String description;
   final DateTime date;
-  final List<String> availableSeats;
+
 
   ShowModel({
     required this.id,
+    required this.type,
+    required this.location,
+    required this.imgUrl,
     required this.title,
     required this.description,
     required this.date,
-    required this.availableSeats,
+    
   });
 
   factory ShowModel.fromJson(Map<String, dynamic> json) =>

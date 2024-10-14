@@ -1,29 +1,57 @@
 import 'package:flutter/material.dart';
 
-class SeatMapWidget extends StatelessWidget {
-  final List<String> availableSeats;
+class SeatMapWidget extends StatefulWidget {
+  final int totalSeats;
   final Function(String) onSeatSelected;
 
   const SeatMapWidget({
-    required this.availableSeats,
+    super.key,
+    required this.totalSeats,
     required this.onSeatSelected,
   });
 
   @override
+  _SeatMapWidgetState createState() => _SeatMapWidgetState();
+}
+
+class _SeatMapWidgetState extends State<SeatMapWidget> {
+  Set<String> selectedSeats = {};
+
+  @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 5, // Adjust the number of columns
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 10,
+        childAspectRatio: 1,
+        crossAxisSpacing: 3,
+        mainAxisSpacing: 2,
       ),
-      itemCount: availableSeats.length,
+      itemCount: widget.totalSeats,
       itemBuilder: (context, index) {
-        final seat = availableSeats[index];
+        final seatNumber = (index + 1).toString().padLeft(3, '0');
+        final isSelected = selectedSeats.contains(seatNumber);
+
         return GestureDetector(
-          onTap: () => onSeatSelected(seat),
+          onTap: () {
+            setState(() {
+              if (isSelected) {
+                selectedSeats.remove(seatNumber);
+              } else {
+                selectedSeats.add(seatNumber);
+              }
+            });
+            widget.onSeatSelected(seatNumber);
+          },
           child: Card(
-            color: Colors.blueAccent,
+            color: isSelected ? Colors.blue : Colors.grey[300],
             child: Center(
-              child: Text(seat),
+              child: Text(
+                seatNumber,
+                style: TextStyle(
+                  color: isSelected ? Colors.white : Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
         );
