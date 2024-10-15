@@ -35,7 +35,9 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Select Seat for ${widget.show.title}')),
+      appBar: AppBar(title: Text('Select Seat for ${widget.show.type} ticket'.toUpperCase(),style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 16,),),
+      backgroundColor: Colors.blue,
+      ),
       body: Column(
         children: [
           Expanded(

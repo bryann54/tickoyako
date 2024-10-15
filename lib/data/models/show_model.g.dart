@@ -14,17 +14,14 @@ ShowModel _$ShowModelFromJson(Map<String, dynamic> json) => ShowModel(
       title: json['title'] as String,
       description: json['description'] as String,
       date: DateTime.parse(json['date'] as String),
-  
-        
     );
 
 Map<String, dynamic> _$ShowModelToJson(ShowModel instance) => <String, dynamic>{
       'id': instance.id,
-      'location': instance.location,
       'type': instance.type,
       'imgUrl': instance.imgUrl,
+      'location': instance.location,
       'title': instance.title,
       'description': instance.description,
       'date': instance.date.toIso8601String(),
-   
     };

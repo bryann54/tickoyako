@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tickoyako/data/repositories/show_repository.dart';
 import 'package:tickoyako/presentation/blocs/shows_bloc/shows_bloc.dart';
 import 'package:tickoyako/presentation/blocs/shows_bloc/shows_event.dart';
-import 'package:tickoyako/presentation/screens/shows_scree.dart';
+import 'package:tickoyako/presentation/screens/shows_screen.dart';
 
 void main() {
   runApp(TickoyakoApp());
