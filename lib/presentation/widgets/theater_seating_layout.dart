@@ -34,17 +34,18 @@ class _TheaterSeatingLayoutState extends State<TheaterSeatingLayout> {
             },
             child: Container(
               margin: const EdgeInsets.all(2),
-              width: 30,
-              height: 30,
+              width: 25,
+              height: 25,
               decoration: BoxDecoration(
-                color: isSelected ? Colors.blue : Colors.grey[300],
+                color: isSelected ? Colors.blue : Colors.black38,
                 border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.circular(5)
               ),
               child: Center(
                 child: Text(
                   '${startSeat + index}',
                   style: TextStyle(
-                    color: isSelected ? Colors.white : Colors.black,
+                    color: isSelected ? Colors.white : Colors.white,
                     fontSize: 10,
                   ),
                 ),
@@ -70,7 +71,7 @@ class _TheaterSeatingLayoutState extends State<TheaterSeatingLayout> {
               Container(
                 height: 40,
                 width: 500, // Adjust this width as needed
-                decoration: const BoxDecoration(color: Colors.grey),
+                decoration: const BoxDecoration(color: Colors.black87),
                 child: const Center(
                   child: Text('STAGE',
                       style: TextStyle(
@@ -99,7 +100,7 @@ class _TheaterSeatingLayoutState extends State<TheaterSeatingLayout> {
               Container(
                 height: 40,
                 width: 500, // Adjust this width as needed
-                decoration: const BoxDecoration(color: Colors.grey),
+                decoration: const BoxDecoration(color: Colors.black87),
                 child: const Center(
                   child: Text('BALCONY',
                       style: TextStyle(
