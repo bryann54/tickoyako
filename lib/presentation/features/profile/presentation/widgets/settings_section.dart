@@ -1,10 +1,19 @@
-// settings_section.dart
 import 'package:flutter/material.dart';
 import 'custom_list_tile.dart';
 import 'custom_switch_tile.dart';
 
-class SettingsSection extends StatelessWidget {
+class SettingsSection extends StatefulWidget {
   const SettingsSection({super.key});
+
+  @override
+  State<SettingsSection> createState() => _SettingsSectionState();
+}
+
+class _SettingsSectionState extends State<SettingsSection> {
+  // State variables to track switch values
+  bool notificationsEnabled = true;
+  bool twoFactorEnabled = false;
+  bool darkModeEnabled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +31,41 @@ class SettingsSection extends StatelessWidget {
           child: Column(
             children: [
               CustomSwitchTile(
-                  context, Icons.notifications, 'Notifications', true),
-              Divider(),
+                context: context,
+                icon: Icons.notifications,
+                title: 'Notifications',
+                value: notificationsEnabled,
+                onChanged: (bool value) {
+                  setState(() {
+                    notificationsEnabled = value;
+                  });
+                },
+              ),
+              const Divider(),
               CustomSwitchTile(
-                  context, Icons.lock, 'Two-Factor Authentication', false),
-              Divider(),
-              CustomSwitchTile(context, Icons.lock, 'Dark mode', false),
-              Divider(),
+                context: context,
+                icon: Icons.lock,
+                title: 'Two-Factor Authentication',
+                value: twoFactorEnabled,
+                onChanged: (bool value) {
+                  setState(() {
+                    twoFactorEnabled = value;
+                  });
+                },
+              ),
+              const Divider(),
+              CustomSwitchTile(
+                context: context,
+                icon: Icons.lock,
+                title: 'Dark mode',
+                value: darkModeEnabled,
+                onChanged: (bool value) {
+                  setState(() {
+                    darkModeEnabled = value;
+                  });
+                },
+              ),
+              const Divider(),
               CustomListTile(Icons.language, 'Language', 'English'),
             ],
           ),

@@ -7,7 +7,7 @@ class ShowModel {
   final String id;
   final String type;
   final String imgUrl;
-  final String location;
+  final String venue;
   final String title;
   final String description;
   final DateTime date;
@@ -21,7 +21,7 @@ class ShowModel {
     required this.event_owner,
     required this.price,
     required this.type,
-    required this.location,
+    required this.venue,
     required this.imgUrl,
     required this.title,
     required this.description,

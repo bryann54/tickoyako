@@ -8,3 +8,12 @@ abstract class ShowsEvent extends Equatable {
 }
 
 class LoadShows extends ShowsEvent {}
+
+class SearchShows extends ShowsEvent {
+  final String query;
+
+  const SearchShows(this.query);
+
+  @override
+  List<Object> get props => [query];
+}

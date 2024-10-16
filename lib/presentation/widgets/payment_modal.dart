@@ -15,8 +15,6 @@ class _PaymentModalState extends State<PaymentModal> {
   final _phoneController = TextEditingController();
   final _ticketsController = TextEditingController();
 
-  bool _isFormValid = false;
-
   @override
   void dispose() {
     _emailController.dispose();
@@ -24,15 +22,6 @@ class _PaymentModalState extends State<PaymentModal> {
     _phoneController.dispose();
     _ticketsController.dispose();
     super.dispose();
-  }
-
-  void _updateFormValidity() {
-    setState(() {
-      _isFormValid = _emailController.text.isNotEmpty &&
-          _nameController.text.isNotEmpty &&
-          _phoneController.text.isNotEmpty &&
-          _ticketsController.text.isNotEmpty;
-    });
   }
 
   @override
@@ -54,10 +43,20 @@ class _PaymentModalState extends State<PaymentModal> {
                 controller: _emailController,
                 decoration: const InputDecoration(
                   labelText: email,
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
                 ),
                 keyboardType: TextInputType.emailAddress,
-                onChanged: (_) => _updateFormValidity(),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return wrong_email;
+                  }
+                  if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                    return wrong_email;
+                  }
+                  return null; // Valid email
+                },
               ),
               const SizedBox(height: 16),
               TextFormField(
@@ -66,7 +65,12 @@ class _PaymentModalState extends State<PaymentModal> {
                   labelText: name,
                   border: OutlineInputBorder(),
                 ),
-                onChanged: (_) => _updateFormValidity(),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return ticket_name;
+                  }
+                  return null; // Valid name
+                },
               ),
               const SizedBox(height: 16),
               TextFormField(
@@ -76,7 +80,18 @@ class _PaymentModalState extends State<PaymentModal> {
                   border: OutlineInputBorder(),
                 ),
                 keyboardType: TextInputType.number,
-                onChanged: (_) => _updateFormValidity(),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return number_billing;
+                  }
+                  if (value.length < 10) {
+                    return valid_number;
+                  }
+                  if (value.length > 10) {
+                    return valid_number;
+                  }
+                  return null; 
+                },
               ),
               const SizedBox(height: 16),
               TextFormField(
@@ -86,23 +101,46 @@ class _PaymentModalState extends State<PaymentModal> {
                   border: OutlineInputBorder(),
                 ),
                 keyboardType: TextInputType.number,
-                onChanged: (_) => _updateFormValidity(),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return ticket_number;
+                  }
+                  if (int.tryParse(value) == null || int.parse(value) <= 0) {
+                    return ticket_number;
+                  }
+                  return null; // Valid ticket count
+                },
               ),
               const SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: _isFormValid
-                    ? () {
-                        // Handle purchase logic here
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SizedBox(
+                  height: 40,
+                  width: double.infinity,
+                  child: Material(
+                    elevation: 5,
+                    borderRadius: BorderRadius.circular(10),
+                    child: ElevatedButton.icon(
+                      label: const Text(purchase),
+                      onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          // Process the purchase
-                          print('Purchase button pressed');
-                          // You can add your purchase logic here
-                          Navigator.of(context).pop(); // Close the modal
+                          // If the form is valid, proceed with your logic
+                          // For example, process the payment or save the data
+                          print('Form submitted successfully!');
                         }
-                      }
-                    : null,
-                child: const Text(purchase),
-              ),
+                      },
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: Colors.teal,
+                        padding: EdgeInsets.symmetric(vertical: 0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),
