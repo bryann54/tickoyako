@@ -9,14 +9,19 @@ import 'package:tickoyako/presentation/widgets/event_card_widget.dart';
 import 'package:tickoyako/presentation/widgets/floating_bottom_nav_bar.dart';
 import 'package:tickoyako/presentation/widgets/search_bar_widget.dart';
 
-class ShowListScreen extends StatelessWidget {
+class ShowListScreen extends StatefulWidget {
   const ShowListScreen({super.key});
 
+  @override
+  State<ShowListScreen> createState() => _ShowListScreenState();
+}
+
+class _ShowListScreenState extends State<ShowListScreen> {
   @override
   Widget build(BuildContext context) {
     return FloatingBottomNavBar(
       children: [
-        _buildMainContent(),
+        _buildMainContent(), // Main content wrapped in a function
         Bookmarks(),
         ProfileScreen(),
       ],
@@ -31,13 +36,13 @@ class ShowListScreen extends StatelessWidget {
             floating: true,
             pinned: true,
             expandedHeight: 160.0,
-            backgroundColor: Colors.teal, // Keep the teal background consistent
+            backgroundColor: Colors.teal,
             flexibleSpace: FlexibleSpaceBar(
-              title: const Column(
+              title: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     home_tittle,
                     style: TextStyle(
                       color: Colors.white,
@@ -45,17 +50,13 @@ class ShowListScreen extends StatelessWidget {
                       fontSize: 16,
                     ),
                   ),
-                  SizedBox(height: 8),
-                  CustomSearchBar(),
+                  const SizedBox(height: 8),
+                  const CustomSearchBar(),
                 ],
               ),
               titlePadding:
                   const EdgeInsets.only(left: 16, right: 16, bottom: 16),
-              background:
-                  Container(color: Colors.teal), // Ensure teal color remains
-              stretchModes: const [
-                StretchMode.fadeTitle,
-              ],
+              background: Container(color: Colors.teal),
             ),
           ),
           SliverPadding(
@@ -67,13 +68,23 @@ class ShowListScreen extends StatelessWidget {
                     child: Center(child: CircularProgressIndicator.adaptive()),
                   );
                 } else if (state is ShowsLoaded) {
+                  final shows = state.searchQuery.isEmpty
+                      ? state.shows
+                      : state.searchResults;
+
+                  if (shows.isEmpty && state.searchQuery.isNotEmpty) {
+                    return const SliverFillRemaining(
+                      child: Center(child: Text('No matching events found')),
+                    );
+                  }
+
                   return SliverList(
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
-                        final show = state.shows[index];
+                        final show = shows[index];
                         return EventCardWidget(showModel: show);
                       },
-                      childCount: state.shows.length,
+                      childCount: shows.length,
                     ),
                   );
                 } else if (state is ShowsError) {

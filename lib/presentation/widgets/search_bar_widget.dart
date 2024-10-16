@@ -1,48 +1,58 @@
+// custom_search_bar.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:async';
 
-class CustomSearchBar extends StatelessWidget {
-  final String hintText; // The placeholder text for the search bar
-  final VoidCallback? onFilterTap; // Callback for filter icon tap
+import 'package:tickoyako/presentation/blocs/shows_bloc/shows_bloc.dart';
+import 'package:tickoyako/presentation/blocs/shows_bloc/shows_event.dart';
 
-  const CustomSearchBar({
-    Key? key,
-    this.hintText = 'Search by events  ', // Default hint text
-    this.onFilterTap,
-  }) : super(key: key);
+class CustomSearchBar extends StatefulWidget {
+  const CustomSearchBar({Key? key}) : super(key: key);
+
+  @override
+  State<CustomSearchBar> createState() => _CustomSearchBarState();
+}
+
+class _CustomSearchBarState extends State<CustomSearchBar> {
+  final TextEditingController _searchController = TextEditingController();
+  Timer? _debounce;
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    _debounce?.cancel();
+    super.dispose();
+  }
+
+  void _onSearchChanged(BuildContext context, String query) {
+    if (_debounce?.isActive ?? false) _debounce!.cancel();
+    _debounce = Timer(const Duration(milliseconds: 500), () {
+      context.read<ShowsBloc>().add(SearchShows(query));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisSize:
-          MainAxisSize.min, // Minimize the row size to only the required space
+      mainAxisSize: MainAxisSize.min,
       children: [
         Expanded(
-          // Use Expanded to allow the search box to take up remaining space
-          child: Padding(
-            padding: const EdgeInsets.all(2.0),
-            child: Container(
-              height: 35,
-              decoration: BoxDecoration(
-                color: Colors.white60,
-                borderRadius: BorderRadius.circular(25), // Rounded corners
-              ),
-              alignment:
-                  Alignment.center, // Center the content inside the container
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(Icons.search, color: Colors.black38),
-                  ),
-                  Expanded(
-                    // Allows the text to take available space
-                    child: Text(
-                      hintText, // Placeholder text
-                      style: TextStyle(
-                          color: Colors.black38, fontSize: 14), // Text color
-                    ),
-                  ),
-                ],
+          child: Container(
+            height: 35,
+            decoration: BoxDecoration(
+              color: Colors.white60,
+              borderRadius: BorderRadius.circular(25),
+            ),
+            alignment: Alignment.center,
+            child: TextField(
+              controller: _searchController,
+              onChanged: (query) => _onSearchChanged(context, query),
+              decoration: const InputDecoration(
+                hintText: 'Search by events',
+                hintStyle: TextStyle(color: Colors.black38, fontSize: 14),
+                prefixIcon: Icon(Icons.search, color: Colors.black38),
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.symmetric(vertical: 8),
               ),
             ),
           ),
@@ -50,18 +60,17 @@ class CustomSearchBar extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.fromLTRB(5, 8, 0, 8),
           child: GestureDetector(
-            onTap: onFilterTap, // Handle filter icon tap
+            onTap: () {
+              // Implement filter functionality
+            },
             child: Container(
               height: 30,
               width: 30,
               decoration: BoxDecoration(
                 color: Colors.white60,
-                borderRadius: BorderRadius.circular(8), // Rounded corners
+                borderRadius: BorderRadius.circular(8),
               ),
-              child: Icon(
-                Icons.tune,
-                color: Colors.white, // Icon color
-              ),
+              child: const Icon(Icons.tune, color: Colors.white),
             ),
           ),
         ),
