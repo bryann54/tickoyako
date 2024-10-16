@@ -53,18 +53,27 @@ class _FloatingBottomNavBarState extends State<FloatingBottomNavBar>
         physics: const BouncingScrollPhysics(),
         children: widget.children,
       ),
-      child: TabBar(
-        indicatorPadding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-        controller: _tabController,
-        indicator: const UnderlineTabIndicator(
-          borderSide: BorderSide(color: Colors.blue, width: 4),
-          insets: EdgeInsets.fromLTRB(16, 0, 16, 8),
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Colors.teal.shade200, Colors.teal.shade400],
+          ),
         ),
-        tabs: [
-          _buildTab(Icons.home, home, 0),
-          _buildTab(Icons.bookmark_border, bookmark, 1),
-          _buildTab(Icons.person, profile, 2),
-        ],
+        child: TabBar(
+          indicatorPadding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+          controller: _tabController,
+          indicator: UnderlineTabIndicator(
+            borderSide: BorderSide(color: Colors.teal.shade700, width: 4),
+            insets: EdgeInsets.fromLTRB(16, 0, 16, 8),
+          ),
+          tabs: [
+            _buildTab(Icons.home, home, 0),
+            _buildTab(Icons.bookmark_border, bookmark, 1),
+            _buildTab(Icons.person, profile, 2),
+          ],
+        ),
       ),
     );
   }
@@ -73,18 +82,15 @@ class _FloatingBottomNavBarState extends State<FloatingBottomNavBar>
     return Tab(
       icon: Icon(
         icon,
-        color: _currentPage == index ? Colors.blue : Colors.grey,
+        color: _currentPage == index ? Colors.teal.shade900 : Colors.white,
       ),
       child: Text(
         label,
         style: TextStyle(
           fontSize: 12,
-          color: _currentPage == index ? Colors.blue : Colors.grey,
+          color: _currentPage == index ? Colors.teal.shade900 : Colors.white,
         ),
       ),
     );
   }
 }
-
-
-  

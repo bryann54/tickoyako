@@ -36,7 +36,7 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-         iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: IconThemeData(color: Colors.white),
         title: Text(
           'Select Seat for ${widget.show.type} ticket'.toUpperCase(),
           style: TextStyle(

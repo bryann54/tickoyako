@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:tickoyako/core/colors.dart';
 import 'package:tickoyako/core/strings.dart';
 import 'package:tickoyako/data/models/show_model.dart';
 import 'package:tickoyako/presentation/features/bookmark/presentation/bloc/bookmark_bloc.dart';
@@ -27,7 +28,7 @@ class EventDetails extends StatelessWidget {
             floating: false,
             pinned: true,
             backgroundColor: Colors.teal,
-             iconTheme: IconThemeData(color: Colors.white),
+            iconTheme: IconThemeData(color: Colors.white),
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
                 'Event Details',
@@ -45,16 +46,7 @@ class EventDetails extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Colors.transparent,
-                          Colors.black.withOpacity(0.7)
-                        ],
-                      ),
-                    ),
+                    decoration: BoxDecoration(gradient: AppColors.typeGradient),
                   ),
                 ],
               ),
@@ -64,7 +56,7 @@ class EventDetails extends StatelessWidget {
                 icon: Icon(
                   isBookmarked ? Icons.bookmark : Icons.bookmark_border,
                   color: Colors.white,
-                  size: isBookmarked? 40:35,
+                  size: isBookmarked ? 40 : 35,
                 ),
                 onPressed: () {
                   context.read<BookmarkBloc>().add(
@@ -95,7 +87,7 @@ class EventDetails extends StatelessWidget {
                               ),
                         ),
                       ),
-                     Container(
+                      Container(
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [Colors.teal, Colors.tealAccent],
@@ -144,7 +136,7 @@ class EventDetails extends StatelessWidget {
                   ),
                   SizedBox(height: 16),
                   Text(
-                   description,
+                    description,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           color: Colors.teal[700],
                           fontWeight: FontWeight.bold,
@@ -160,17 +152,17 @@ class EventDetails extends StatelessWidget {
                     children: [
                       Expanded(
                         child: ElevatedButton.icon(
-                           icon: const Icon(Icons.event_seat),
-                            label: const Text('View Seats'),
+                          icon: const Icon(Icons.event_seat),
+                          label: const Text('View Seats'),
                           onPressed: () => Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (_) => SeatSelectionScreen(show: show),
                             ),
                           ),
-                        
                           style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white, backgroundColor: Colors.teal,
+                            foregroundColor: Colors.white,
+                            backgroundColor: Colors.teal,
                             padding: EdgeInsets.symmetric(vertical: 16),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -206,9 +198,9 @@ class EventDetails extends StatelessWidget {
                               },
                             );
                           },
-                       
                           style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white, backgroundColor: Colors.blue,
+                            foregroundColor: Colors.white,
+                            backgroundColor: Colors.blue,
                             padding: EdgeInsets.symmetric(vertical: 16),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),

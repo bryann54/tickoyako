@@ -4,13 +4,20 @@ import 'package:tickoyako/core/strings.dart';
 import 'package:tickoyako/presentation/features/bookmark/presentation/bloc/bookmark_bloc.dart';
 import 'package:tickoyako/presentation/features/bookmark/presentation/bloc/bookmark_state.dart';
 import 'package:tickoyako/presentation/widgets/event_card_widget.dart';
+
 class Bookmarks extends StatelessWidget {
   const Bookmarks({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text(bookmark,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),backgroundColor: Colors.teal,),
+      appBar: AppBar(
+        title: const Text(
+          bookmark,
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.teal,
+      ),
       body: BlocBuilder<BookmarkBloc, BookmarkState>(
         builder: (context, state) {
           if (state.bookmarkedShows.isEmpty) {

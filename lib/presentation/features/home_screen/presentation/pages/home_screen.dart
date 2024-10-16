@@ -16,7 +16,9 @@ class HomeScreen extends StatelessWidget {
         body: Column(
           children: [
             SearchBar(),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Expanded(
               child: BlocBuilder<HomeScreenBloc, HomeScreenState>(
                 builder: (context, state) {
@@ -31,7 +33,6 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
             ),
-            
           ],
         ),
       ),

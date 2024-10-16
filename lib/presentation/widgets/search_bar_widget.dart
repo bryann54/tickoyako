@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 class CustomSearchBar extends StatelessWidget {
@@ -40,7 +38,8 @@ class CustomSearchBar extends StatelessWidget {
                     // Allows the text to take available space
                     child: Text(
                       hintText, // Placeholder text
-                      style: TextStyle(color: Colors.black38,fontSize: 14), // Text color
+                      style: TextStyle(
+                          color: Colors.black38, fontSize: 14), // Text color
                     ),
                   ),
                 ],

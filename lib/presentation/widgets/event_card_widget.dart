@@ -40,13 +40,12 @@ class _EventCardWidgetState extends State<EventCardWidget> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-               
                   const SizedBox(width: 10),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                           Hero(
+                        Hero(
                           tag:
                               'event_image_${show.id}', // Unique tag for the Hero animation
                           child: ClipRRect(
@@ -63,25 +62,24 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                         ),
                         Text(
                           show.title,
-                         style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge
-                              ?.copyWith(
-                                color: Colors.teal[700],
-                                fontWeight: FontWeight.bold,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                    color: Colors.teal[700],
+                                    fontWeight: FontWeight.bold,
+                                  ),
                         ),
                         const SizedBox(height: 5),
-                        // Text(
-                        //   show.description,
-                        //   style: TextStyle(
-                        //     fontSize: 14,
-                        //     color: Colors.grey[600],
-                        //   ),
-                        //   maxLines: 2,
-                        //   overflow: TextOverflow.ellipsis,
-                        // ),
-                        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Text(
+                          show.description,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey[600],
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
                               children: [
@@ -91,7 +89,7 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                  const SizedBox(width: 5),
+                                const SizedBox(width: 5),
                                 Text(
                                   DateFormat('MMM dd, yyyy').format(show.date),
                                   style: TextStyle(
@@ -101,43 +99,55 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                                 ),
                               ],
                             ),
-                          
                             const SizedBox(width: 70),
                             Container(
                               decoration: BoxDecoration(
-                                border: Border.all(color: Colors.blue),
-                                borderRadius: BorderRadius.circular(15),
+                                gradient: LinearGradient(
+                                  colors: [Colors.teal, Colors.tealAccent],
+                                ),
+                                borderRadius: BorderRadius.circular(20),
                               ),
                               child: Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(10, 4, 10, 4),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 4),
                                 child: Text(
-                                  show.type,
-                                  style: const TextStyle(
-                                      fontSize: 12, color: Colors.blue),
+                                  show.type.toUpperCase(),
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
                           ],
                         ),
-                         const SizedBox(width: 5),
+                        const SizedBox(width: 5),
                         Padding(
-                          padding: const EdgeInsets.all(5.0),
+                          padding: const EdgeInsets.fromLTRB(5, 15, 5, 0),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Icon(
-                                Icons.location_on,
-                                size: 20,
-                                color: Colors.blue,
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.location_on,
+                                    size: 25,
+                                    color: Colors.blue,
+                                  ),
+                                  const SizedBox(width: 1),
+                                  Text(show.location),
+                                ],
                               ),
-                              const SizedBox(width: 1),
-                              Text(show.location),
-                            
+                              Text(
+                                'Ksh ${NumberFormat('#,###').format(show.price)}',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
                             ],
                           ),
                         ),
-                             const SizedBox(height: 20),
-                
+                        const SizedBox(height: 20),
                       ],
                     ),
                   ),

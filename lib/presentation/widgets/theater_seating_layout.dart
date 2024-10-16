@@ -37,10 +37,9 @@ class _TheaterSeatingLayoutState extends State<TheaterSeatingLayout> {
               width: 25,
               height: 25,
               decoration: BoxDecoration(
-                color: isSelected ? Colors.blue : Colors.black38,
-                border: Border.all(color: Colors.black),
-                borderRadius: BorderRadius.circular(5)
-              ),
+                  color: isSelected ? Colors.blue : Colors.black38,
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(5)),
               child: Center(
                 child: Text(
                   '${startSeat + index}',
