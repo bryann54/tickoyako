@@ -41,10 +41,13 @@ dependencies:
   connectivity_plus: ^6.0.5
   cached_network_image: ^3.2.0
   equatable: ^2.0.5
-  intl: ^0.18.0 
+  intl: ^0.19.0 
   fade_scroll_app_bar: ^0.0.7
   flutter_chat_ui: ^1.6.15
   flutter_chat_types: ^3.4.5
+  floating_frosted_bottom_bar: ^0.0.1
+  flutter_floating_bottom_bar: ^1.2.1+1
+
 dev_dependencies:
   build_runner: ^2.0.0
   json_serializable: ^6.6.0
@@ -56,7 +59,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

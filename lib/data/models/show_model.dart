@@ -11,17 +11,21 @@ class ShowModel {
   final String title;
   final String description;
   final DateTime date;
-
+  final int price;
+  final String event_owner;
+  final String contact;
 
   ShowModel({
     required this.id,
+    required this.contact,
+    required this.event_owner,
+    required this.price,
     required this.type,
     required this.location,
     required this.imgUrl,
     required this.title,
     required this.description,
     required this.date,
-    
   });
 
   factory ShowModel.fromJson(Map<String, dynamic> json) =>

@@ -35,30 +35,54 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Select Seat for ${widget.show.title}')),
-      body: Column(
-        children: [
-          Expanded(
-            child: TheaterSeatingLayout(
-              onSeatSelected: _onSeatSelected,
-            ),
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
+        title: Text(
+          'Select Seat for ${widget.show.type} ticket'.toUpperCase(),
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
           ),
-          if (selectedSeats.isNotEmpty)
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: ElevatedButton(
-                onPressed: _bookSeats,
-                child: Text(
-                  'Book ${selectedSeats.length} Seat(s)',
-                  style: TextStyle(color: Colors.white),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                ),
+        ),
+        backgroundColor: Colors.teal,
+      ),
+      body: Container(
+        // Use Container with BoxDecoration for gradient background
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.teal.withOpacity(0.1), // Very light shade of teal
+              Colors.blue.withOpacity(0.2), // Slightly darker shade
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: TheaterSeatingLayout(
+                onSeatSelected: _onSeatSelected,
               ),
             ),
-        ],
+            if (selectedSeats.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: ElevatedButton(
+                  onPressed: _bookSeats,
+                  child: Text(
+                    'Book ${selectedSeats.length} Seat(s)',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  ),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
