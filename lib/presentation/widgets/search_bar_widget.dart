@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tickoyako/core/strings.dart';
 import 'dart:async';
 
 import 'package:tickoyako/presentation/blocs/shows_bloc/shows_bloc.dart';
@@ -56,12 +57,13 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
                 color: Colors.black87,
               ),
               decoration: InputDecoration(
-                hintText: 'Search events',
+                hintText: search_text,
                 hintStyle: const TextStyle(
                   fontSize: 12,
-                  color: Colors.black54,
+                  fontStyle: FontStyle.italic,
+                  color: Colors.black12,
                 ),
-                prefixIcon: Icon(Icons.search, color: Colors.teal.shade700),
+                prefixIcon: Icon(Icons.search, color: Colors.teal.shade100,size: 27,),
                 suffixIcon: _searchController.text.isNotEmpty
                     ? IconButton(
                         icon: Icon(Icons.clear, color: Colors.teal.shade700),

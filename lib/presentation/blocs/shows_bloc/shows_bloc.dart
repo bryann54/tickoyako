@@ -40,7 +40,7 @@ class ShowsBloc extends Bloc<ShowsEvent, ShowsState> {
         final query = event.query.toLowerCase();
         return show.title.toLowerCase().contains(query) ||
             show.type.toLowerCase().contains(query) ||
-            show.location.toLowerCase().contains(query) ||
+            show.venue.toLowerCase().contains(query) ||
             show.description.toLowerCase().contains(query);
       }).toList();
 

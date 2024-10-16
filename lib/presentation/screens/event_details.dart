@@ -124,7 +124,7 @@ class EventDetails extends StatelessWidget {
                           _buildInfoRow(Icons.calendar_today, 'Date',
                               DateFormat('MMM dd, yyyy').format(show.date)),
                           _buildInfoRow(
-                              Icons.location_on, 'Location', show.location),
+                              Icons.location_on, 'venue', show.venue),
                           _buildInfoRow(Icons.phone, 'Contact', show.contact),
                           _buildInfoRow(Icons.attach_money, 'Price',
                               'Ksh ${NumberFormat('#,###').format(show.price)}'),

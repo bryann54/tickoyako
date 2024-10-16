@@ -43,15 +43,17 @@ class _PaymentModalState extends State<PaymentModal> {
                 controller: _emailController,
                 decoration: const InputDecoration(
                   labelText: email,
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
                 ),
                 keyboardType: TextInputType.emailAddress,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'email needed to ticket details';
+                    return wrong_email;
                   }
                   if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-                    return 'email needed to ticket details';
+                    return wrong_email;
                   }
                   return null; // Valid email
                 },
@@ -65,7 +67,7 @@ class _PaymentModalState extends State<PaymentModal> {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'name to appear on ticket';
+                    return ticket_name;
                   }
                   return null; // Valid name
                 },
@@ -80,10 +82,13 @@ class _PaymentModalState extends State<PaymentModal> {
                 keyboardType: TextInputType.number,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'number required for billing';
+                    return number_billing;
                   }
                   if (value.length < 10) {
-                    return 'Please enter a valid phone number';
+                    return valid_number;
+                  }
+                  if (value.length > 10) {
+                    return valid_number;
                   }
                   return null; 
                 },
@@ -98,10 +103,10 @@ class _PaymentModalState extends State<PaymentModal> {
                 keyboardType: TextInputType.number,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter the number of tickets';
+                    return ticket_number;
                   }
                   if (int.tryParse(value) == null || int.parse(value) <= 0) {
-                    return 'Please enter a valid number of tickets';
+                    return ticket_number;
                   }
                   return null; // Valid ticket count
                 },
@@ -109,7 +114,7 @@ class _PaymentModalState extends State<PaymentModal> {
               const SizedBox(height: 24),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Container(
+                child: SizedBox(
                   height: 40,
                   width: double.infinity,
                   child: Material(
