@@ -1,4 +1,3 @@
-// custom_search_bar.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:async';
@@ -33,44 +32,77 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(
           child: Container(
-            height: 35,
+            height: 30,
             decoration: BoxDecoration(
-              color: Colors.white60,
-              borderRadius: BorderRadius.circular(25),
+               color: Colors.teal[50],
+              borderRadius: BorderRadius.circular(30),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 10,
+                  offset: Offset(0, 3),
+                ),
+              ],
             ),
-            alignment: Alignment.center,
             child: TextField(
               controller: _searchController,
               onChanged: (query) => _onSearchChanged(context, query),
-              decoration: const InputDecoration(
-                hintText: 'Search by events',
-                hintStyle: TextStyle(color: Colors.black38, fontSize: 14),
-                prefixIcon: Icon(Icons.search, color: Colors.black38),
+              style: const TextStyle(
+                fontSize: 12,
+                color: Colors.black87,
+              ),
+              decoration: InputDecoration(
+                hintText: 'Search events',
+                hintStyle: const TextStyle(
+                  fontSize: 12,
+                  color: Colors.black54,
+                ),
+                prefixIcon: Icon(Icons.search, color: Colors.teal.shade700),
+                suffixIcon: _searchController.text.isNotEmpty
+                    ? IconButton(
+                        icon: Icon(Icons.clear, color: Colors.teal.shade700),
+                        onPressed: () {
+                          setState(() {
+                            _searchController.clear();
+                          });
+                          context.read<ShowsBloc>().add(SearchShows(''));
+                        },
+                      )
+                    : null,
                 border: InputBorder.none,
-                contentPadding: EdgeInsets.symmetric(vertical: 8),
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               ),
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(5, 8, 0, 8),
-          child: GestureDetector(
-            onTap: () {
-              // Implement filter functionality
-            },
-            child: Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                color: Colors.white60,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: const Icon(Icons.tune, color: Colors.white),
+        const SizedBox(width: 5),
+        GestureDetector(
+          onTap: () {
+            // Implement filter functionality
+          },
+          child: Container(
+            height: 30,
+            width: 30,
+            decoration: BoxDecoration(
+              color: Colors.teal[50],
+              borderRadius: BorderRadius.circular(8),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 10,
+                  offset: Offset(0, 3),
+                ),
+              ],
+            ),
+            child: const Icon(
+              Icons.tune,
+              color: Colors.black38,
+              size: 18,
             ),
           ),
         ),

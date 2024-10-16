@@ -7,7 +7,7 @@ import 'package:tickoyako/presentation/features/bookmark/presentation/bloc/bookm
 import 'package:tickoyako/presentation/features/bookmark/presentation/bloc/bookmark_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tickoyako/presentation/screens/seat_selection.dart';
-import 'package:tickoyako/presentation/widgets/payment_modal.dart';
+import 'package:tickoyako/presentation/widgets/book_ticket_widget.dart';
 
 class EventDetails extends StatelessWidget {
   final ShowModel show;
@@ -151,63 +151,31 @@ class EventDetails extends StatelessWidget {
                   Row(
                     children: [
                       Expanded(
-                        child: ElevatedButton.icon(
-                          icon: const Icon(Icons.event_seat),
-                          label: const Text('View Seats'),
-                          onPressed: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => SeatSelectionScreen(show: show),
+                        child: Material(
+                          elevation: 5,
+                            borderRadius: BorderRadius.circular(10),
+                          child: ElevatedButton.icon(
+                            icon: const Icon(Icons.event_seat),
+                            label: const Text('View Seats'),
+                            onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => SeatSelectionScreen(show: show),
+                              ),
                             ),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            backgroundColor: Colors.teal,
-                            padding: EdgeInsets.symmetric(vertical: 16),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor: Colors.teal,
+                              padding: EdgeInsets.symmetric(vertical: 16),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
                             ),
                           ),
                         ),
                       ),
                       SizedBox(width: 16),
-                      Expanded(
-                        child: ElevatedButton.icon(
-                          icon: const Icon(Icons.confirmation_number),
-                          label: const Text('Book Ticket'),
-                          onPressed: () {
-                            showGeneralDialog(
-                              context: context,
-                              barrierDismissible: true,
-                              barrierLabel: 'Dismiss',
-                              barrierColor: Colors.black.withOpacity(0.5),
-                              transitionDuration: Duration(milliseconds: 700),
-                              pageBuilder:
-                                  (context, animation, secondaryAnimation) {
-                                return PaymentModal();
-                              },
-                              transitionBuilder: (context, animation,
-                                  secondaryAnimation, child) {
-                                return SlideTransition(
-                                  position: Tween<Offset>(
-                                    begin: Offset(0, 1),
-                                    end: Offset.zero,
-                                  ).animate(animation),
-                                  child: child,
-                                );
-                              },
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            backgroundColor: Colors.blue,
-                            padding: EdgeInsets.symmetric(vertical: 16),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                        ),
-                      ),
+                BookTicketWidget(),
                     ],
                   ),
                 ],

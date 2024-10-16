@@ -10,7 +10,7 @@ class FloatingBottomNavBar extends StatefulWidget {
       : super(key: key);
 
   @override
-  _FloatingBottomNavBarState createState() => _FloatingBottomNavBarState();
+  State<FloatingBottomNavBar> createState() => _FloatingBottomNavBarState();
 }
 
 class _FloatingBottomNavBarState extends State<FloatingBottomNavBar>

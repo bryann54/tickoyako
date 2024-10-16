@@ -1,4 +1,3 @@
-// custom_switch_tile.dart
 import 'package:flutter/material.dart';
 
 class CustomSwitchTile extends StatelessWidget {
@@ -6,22 +5,27 @@ class CustomSwitchTile extends StatelessWidget {
   final IconData icon;
   final String title;
   final bool value;
+  final ValueChanged<bool> onChanged;
 
-  const CustomSwitchTile(this.context, this.icon, this.title, this.value, {super.key});
+  const CustomSwitchTile({
+    super.key,
+    required this.context,
+    required this.icon,
+    required this.title,
+    required this.value,
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return SwitchListTile(
-      secondary: Icon(icon, color: Colors.teal),
+    return ListTile(
+      leading: Icon(icon, color: Colors.teal),
       title: Text(title),
-      value: value,
-      activeColor: Colors.teal,
-      onChanged: (bool newValue) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-              content: Text('$title ${newValue ? 'enabled' : 'disabled'}')),
-        );
-      },
+      trailing: Switch(
+        value: value,
+        onChanged: onChanged,
+        activeColor: Colors.teal,
+      ),
     );
   }
 }

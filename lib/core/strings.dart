@@ -17,3 +17,7 @@ const payment_details = 'Payment Details';
 const description = 'Description';
 const event_owner = 'event organised by';
 const logout = 'Logout';
+const schedule_text = 'Scheduled for';
+const confirm_logout ="Confirm Logout";
+const logout_text = "Are you sure you want to logout?";
+const cancel ="Cancel";

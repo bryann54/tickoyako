@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:tickoyako/core/strings.dart';
 import 'package:tickoyako/data/models/show_model.dart';
 import 'package:tickoyako/presentation/features/bookmark/presentation/bloc/bookmark_bloc.dart';
 import 'package:tickoyako/presentation/features/bookmark/presentation/bloc/bookmark_state.dart';
@@ -40,12 +41,13 @@ class _EventCardWidgetState extends State<EventCardWidget> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+               
                   const SizedBox(width: 10),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Hero(
+                           Hero(
                           tag:
                               'event_image_${show.id}', // Unique tag for the Hero animation
                           child: ClipRRect(
@@ -62,11 +64,13 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                         ),
                         Text(
                           show.title,
-                          style:
-                              Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                    color: Colors.teal[700],
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                         style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(
+                                color: Colors.teal[700],
+                                fontWeight: FontWeight.bold,
+                              ),
                         ),
                         const SizedBox(height: 5),
                         Text(
@@ -78,18 +82,17 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
                               children: [
                                 const Text(
-                                  'On',
+                                 schedule_text,
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                const SizedBox(width: 5),
+                                  const SizedBox(width: 5),
                                 Text(
                                   DateFormat('MMM dd, yyyy').format(show.date),
                                   style: TextStyle(
@@ -99,6 +102,7 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                                 ),
                               ],
                             ),
+                          
                             const SizedBox(width: 70),
                             Container(
                               decoration: BoxDecoration(
@@ -122,11 +126,10 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                             ),
                           ],
                         ),
-                        const SizedBox(width: 5),
+                         const SizedBox(width: 5),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(5, 15, 5, 0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
                                 children: [
@@ -137,17 +140,16 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                                   ),
                                   const SizedBox(width: 1),
                                   Text(show.location),
+                               
                                 ],
                               ),
-                              Text(
-                                'Ksh ${NumberFormat('#,###').format(show.price)}',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20),
-                              ),
+                                Text(
+                                  'Ksh ${NumberFormat('#,###').format(show.price)}',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
                             ],
                           ),
                         ),
-                        const SizedBox(height: 20),
+                             const SizedBox(height: 20),
+                
                       ],
                     ),
                   ),
