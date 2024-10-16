@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tickoyako/core/colors.dart';
+import 'package:tickoyako/core/strings.dart';
 
 class FilterBottomSheet extends StatefulWidget {
   final Map<String, dynamic> initialFilters;
@@ -277,7 +278,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                   ),
                   alignment: Alignment.center,
                   child: const Text(
-                    'Cancel',
+                   cancel,
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
