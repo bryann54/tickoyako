@@ -123,8 +123,7 @@ class EventDetails extends StatelessWidget {
                         children: [
                           _buildInfoRow(Icons.calendar_today, 'Date',
                               DateFormat('MMM dd, yyyy').format(show.date)),
-                          _buildInfoRow(
-                              Icons.location_on, 'venue', show.venue),
+                          _buildInfoRow(Icons.location_on, 'venue', show.venue),
                           _buildInfoRow(Icons.phone, 'Contact', show.contact),
                           _buildInfoRow(Icons.attach_money, 'Price',
                               'Ksh ${NumberFormat('#,###').format(show.price)}'),
@@ -148,41 +147,56 @@ class EventDetails extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   SizedBox(height: 24),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Material(
-                          elevation: 5,
-                            borderRadius: BorderRadius.circular(10),
-                          child: ElevatedButton.icon(
-                            icon: const Icon(Icons.event_seat),
-                            label: const Text('View Seats'),
-                            onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => SeatSelectionScreen(show: show),
-                              ),
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              backgroundColor: Colors.teal,
-                              padding: EdgeInsets.symmetric(vertical: 16),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 16),
-                BookTicketWidget(),
-                    ],
-                  ),
                 ],
               ),
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 1,
+              blurRadius: 5,
+              offset: Offset(0, -3),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Material(
+                elevation: 5,
+                borderRadius: BorderRadius.circular(10),
+                child: ElevatedButton.icon(
+                  icon: const Icon(Icons.event_seat),
+                  label: const Text('View Seats'),
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => SeatSelectionScreen(show: show),
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.teal,
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(width: 16),
+            BookTicketWidget(),
+          
+          ],
+        ),
       ),
     );
   }

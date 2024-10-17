@@ -32,7 +32,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
     'Miami',
     'Las Vegas'
   ];
-  RangeValues _priceRange = const RangeValues(0, 1000);
+  RangeValues _priceRange = const RangeValues(0, 20000);
   DateTime? _selectedDate;
 
   @override
@@ -41,7 +41,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
     _filters = Map<String, dynamic>.from(widget.initialFilters);
     _priceRange = RangeValues(
       _filters['minPrice']?.toDouble() ?? 0,
-      _filters['maxPrice']?.toDouble() ?? 1000,
+      _filters['maxPrice']?.toDouble() ?? 20000,
     );
     _selectedDate = _filters['date'];
   }
@@ -91,7 +91,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.8), 
+          color: Colors.white.withOpacity(0.5), 
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
         boxShadow: [
           BoxShadow(
@@ -174,11 +174,11 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
         RangeSlider(
           values: _priceRange,
           min: 0,
-          max: 1000,
+          max: 20000,
           divisions: 20,
           labels: RangeLabels(
-            '\$${_priceRange.start.round()}',
-            '\$${_priceRange.end.round()}',
+            '\ksh ${_priceRange.start.round()}',
+            '\ksh ${_priceRange.end.round()}',
           ),
           onChanged: (RangeValues values) {
             setState(() {
@@ -193,8 +193,8 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('\$${_priceRange.start.round()}'),
-            Text('\$${_priceRange.end.round()}'),
+            Text('\ksh ${_priceRange.start.round()}'),
+            Text('\ksh ${_priceRange.end.round()}'),
           ],
         ),
       ],
@@ -253,7 +253,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-         color: Colors.white.withOpacity(0.8), 
+         color: Colors.white.withOpacity(0.5), 
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
@@ -316,7 +316,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
   void _resetFilters() {
     setState(() {
       _filters = {};
-      _priceRange = const RangeValues(0, 1000);
+      _priceRange = const RangeValues(0, 20000);
       _selectedDate = null;
     });
   }

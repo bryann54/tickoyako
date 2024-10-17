@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
-const home_tittle = 'Upcoming shows';
+const home_tittle = 'Upcoming Events';
 const book_ticket = 'Book ticket';
 const view_seats = 'view seats';
 const home = 'Home';
