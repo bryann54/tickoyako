@@ -6,10 +6,8 @@ import 'package:tickoyako/core/theme/theme_controller.dart';
 import 'package:tickoyako/data/repositories/show_repository.dart';
 import 'package:tickoyako/presentation/blocs/shows_bloc/shows_bloc.dart';
 import 'package:tickoyako/presentation/blocs/shows_bloc/shows_event.dart';
+import 'package:tickoyako/presentation/features/auth/presentation/pages/splash_screen.dart';
 import 'package:tickoyako/presentation/features/bookmark/presentation/bloc/bookmark_bloc.dart';
-import 'package:tickoyako/presentation/screens/shows_screen.dart';
-
-
 void main() {
   runApp(
     ChangeNotifierProvider(
@@ -21,6 +19,8 @@ void main() {
 
 class TickoyakoApp extends StatelessWidget {
   final ShowRepository showRepository = ShowRepository();
+
+  TickoyakoApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class TickoyakoApp extends StatelessWidget {
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
             themeMode: themeController.themeMode,
-            home: ShowListScreen(),
+            home: SplashScreen(),
           ),
         );
       },
