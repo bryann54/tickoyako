@@ -1,5 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
+
+
 const home_tittle = 'Upcoming Events';
 const book_ticket = 'Book ticket';
 const view_seats = 'view seats';
@@ -27,3 +29,11 @@ const number_billing='number required for billing';
 const valid_number ='Please enter a valid phone number';
 const ticket_number='Please enter the number of tickets';
 const search_text='Search events by name';
+const dark_mode='Dark mode';
+const auth_text='Two-Factor Authentication';
+const notification_text='Notification';
+const lang='Language';
+const eng='English';
+const email_txt= 'user@gmail.com';
+const user_name='User name';
+const apply ='Apply';

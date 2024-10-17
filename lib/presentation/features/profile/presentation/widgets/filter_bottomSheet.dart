@@ -300,7 +300,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                   ),
                   alignment: Alignment.center,
                   child: const Text(
-                    'Apply',
+                    apply,
                     style: TextStyle(color: AppColors.secondaryColor),
                   ),
                 ),

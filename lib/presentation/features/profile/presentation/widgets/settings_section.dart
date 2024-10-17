@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tickoyako/core/colors.dart';
+import 'package:tickoyako/core/strings.dart';
 import 'custom_list_tile.dart';
 import 'custom_switch_tile.dart';
 
@@ -11,7 +12,6 @@ class SettingsSection extends StatefulWidget {
 }
 
 class _SettingsSectionState extends State<SettingsSection> {
-  // State variables to track switch values
   bool notificationsEnabled = true;
   bool twoFactorEnabled = false;
   bool darkModeEnabled = false;
@@ -34,7 +34,7 @@ class _SettingsSectionState extends State<SettingsSection> {
               CustomSwitchTile(
                 context: context,
                 icon: Icons.notifications,
-                title: 'Notifications',
+                title: notification_text,
                 value: notificationsEnabled,
                 onChanged: (bool value) {
                   setState(() {
@@ -48,7 +48,7 @@ class _SettingsSectionState extends State<SettingsSection> {
               CustomSwitchTile(
                 context: context,
                 icon: Icons.lock,
-                title: 'Two-Factor Authentication',
+                title: auth_text,
                 value: twoFactorEnabled,
                 onChanged: (bool value) {
                   setState(() {
@@ -63,7 +63,7 @@ class _SettingsSectionState extends State<SettingsSection> {
                 context: context,
                 icon: Icons.lock,
                 
-                title: 'Dark mode',
+                title: dark_mode,
                 value: darkModeEnabled,
                 onChanged: (bool value) {
                   setState(() {
@@ -74,7 +74,7 @@ class _SettingsSectionState extends State<SettingsSection> {
               const   Divider(
                 color: AppColors.textSecondary,
               ),
-              CustomListTile(Icons.language, 'Language', 'English'),
+              CustomListTile(Icons.language, lang, eng),
             ],
           ),
         ),
