@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tickoyako/core/strings.dart';
-import 'package:tickoyako/presentation/screens/shows_screen.dart';
+import 'package:tickoyako/presentation/features/auth/presentation/pages/auth_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -35,9 +35,9 @@ class _SplashScreenState extends State<SplashScreen>
     // Navigate to ShowListScreen after animation completes
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        Future.delayed(Duration(milliseconds: 500), () {
+        Future.delayed(const Duration(milliseconds: 500), () {
           Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (_) => ShowListScreen()),
+            MaterialPageRoute(builder: (_) => const AuthScreen()),
           );
         });
       }
@@ -72,19 +72,19 @@ class _SplashScreenState extends State<SplashScreen>
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.event_seat,
                         size: 100,
                         color: Colors.white,
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       ShaderMask(
-                        shaderCallback: (bounds) => LinearGradient(
+                        shaderCallback: (bounds) => const LinearGradient(
                           colors: [Colors.white, Colors.tealAccent],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ).createShader(bounds),
-                        child: Text(
+                        child: const Text(
                           tittle,
                           style: TextStyle(
                             fontSize: 32,
