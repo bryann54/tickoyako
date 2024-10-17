@@ -97,7 +97,7 @@ class ShowRepository {
         type: 'Movie',
         title: 'The Phantom of the Opera',
         description:
-            'Comedy is a genre that consists of discourses or works intended to be humorous or amusing by inducing laughter, especially in theatre, film, stand-up comedy, television, radio, books, or any other entertainment medium. The term originated in',
+            'Comedy is a genre that consists of discourses or works intended to be humorous or amusing by inducing laughter, especially in theatre, film, stand-up comedy, television, radio, books, or any other entertainment medium. The term originated inComedy is a genre that consists of discourses or works intended to be humorous or amusing by inducing laughter, especially in theatre, film, stand-up comedy, television, radio, books, or any other entertainment medium. The term originated inComedy is a genre that consists of discourses or works intended to be humorous or amusing by inducing laughter, especially in theatre, film, stand-up comedy, television, radio, books, or any other entertainment medium. The term originated in',
         date: DateTime.now(),
         venue: 'ASK dome',
       ),
@@ -123,7 +123,7 @@ class ShowRepository {
         imgUrl:
             'https://static.wikia.nocookie.net/intothebadlands/images/d/d2/Season_1_poster.png/revision/latest?cb=20170917152438',
         type: 'Movie',
-        title: 'The Phantom of the Opera',
+        title: 'The Phantom of the Opera ',
         description:
             'Comedy is a genre that consists of discourses or works intended to be humorous or amusing by inducing laughter, especially in theatre, film, stand-up comedy, television, radio, books, or any other entertainment medium. The term originated in',
         date: DateTime.now(),

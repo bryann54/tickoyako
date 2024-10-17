@@ -51,7 +51,7 @@ class ProfileAppBar extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'John Doe',
+                                'user name ',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -59,7 +59,7 @@ class ProfileAppBar extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                'johndoe@example.com',
+                                'user@gmail.com',
                                 style: TextStyle(
                                   color: Colors.white.withOpacity(0.8),
                                   fontSize: 14,
