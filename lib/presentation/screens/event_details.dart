@@ -16,24 +16,35 @@ class EventDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isLightMode = theme.brightness == Brightness.light;
+    
     final isBookmarked = context.select<BookmarkBloc, bool>(
         (bloc) => bloc.state.bookmarkedShows.contains(show));
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
             expandedHeight: 300,
             floating: false,
             pinned: true,
-            backgroundColor: Colors.teal,
-            iconTheme: IconThemeData(color: Colors.white),
+            backgroundColor: isLightMode 
+                ? AppColors.primaryColor 
+                : AppColors.primaryColorDark,
+            iconTheme: IconThemeData(
+                color: isLightMode 
+                    ? AppColors.secondaryColor 
+                    : AppColors.secondaryColorDark),
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
                 'Event Details',
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: isLightMode 
+                        ? AppColors.secondaryColor 
+                        : AppColors.secondaryColorDark,
+                    fontWeight: FontWeight.bold),
               ),
               background: Stack(
                 fit: StackFit.expand,
@@ -46,7 +57,11 @@ class EventDetails extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    decoration: BoxDecoration(gradient: AppColors.typeGradient),
+                    decoration: BoxDecoration(
+                      gradient: isLightMode 
+                          ? AppColors.typeGradient 
+                          : AppColors.darkTypeGradient,
+                    ),
                   ),
                 ],
               ),
@@ -55,7 +70,9 @@ class EventDetails extends StatelessWidget {
               IconButton(
                 icon: Icon(
                   isBookmarked ? Icons.bookmark : Icons.bookmark_border,
-                  color: Colors.white,
+                  color: isLightMode 
+                      ? AppColors.secondaryColor 
+                      : AppColors.secondaryColorDark,
                   size: isBookmarked ? 40 : 35,
                 ),
                 onPressed: () {
@@ -78,20 +95,19 @@ class EventDetails extends StatelessWidget {
                       Expanded(
                         child: Text(
                           show.title,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineMedium
-                              ?.copyWith(
-                                color: Colors.teal[700],
-                                fontWeight: FontWeight.bold,
-                              ),
+                          style: theme.textTheme.headlineMedium?.copyWith(
+                            color: isLightMode 
+                                ? AppColors.textPrimary 
+                                : AppColors.textPrimaryDark,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [Colors.teal, Colors.tealAccent],
-                          ),
+                          gradient: isLightMode 
+                              ? AppColors.lightButtonGradient 
+                              : AppColors.darkButtonGradient,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Padding(
@@ -101,7 +117,9 @@ class EventDetails extends StatelessWidget {
                             show.type.toUpperCase(),
                             style: TextStyle(
                               fontSize: 12,
-                              color: Colors.white,
+                              color: isLightMode 
+                                  ? AppColors.textPrimary 
+                                  : AppColors.textPrimaryDark,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -112,23 +130,29 @@ class EventDetails extends StatelessWidget {
                   SizedBox(height: 16),
                   Card(
                     elevation: 2,
+                    color: isLightMode 
+                        ? AppColors.surface 
+                        : AppColors.surfaceColorDark,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
-                      side: BorderSide(color: Colors.tealAccent),
+                      side: BorderSide(
+                        color: isLightMode 
+                            ? AppColors.primaryColor 
+                            : AppColors.primaryColorDark,
+                      ),
                     ),
                     child: Padding(
                       padding: EdgeInsets.all(16),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          _buildInfoRow(Icons.calendar_today, 'Date',
+                          _buildInfoRow(context, Icons.calendar_today, 'Date',
                               DateFormat('MMM dd, yyyy').format(show.date)),
-                          _buildInfoRow(Icons.location_on, 'venue', show.venue),
-                          _buildInfoRow(Icons.phone, 'Contact', show.contact),
-                          _buildInfoRow(Icons.attach_money, 'Price',
+                          _buildInfoRow(context, Icons.location_on, 'venue', show.venue),
+                          _buildInfoRow(context, Icons.phone, 'Contact', show.contact),
+                          _buildInfoRow(context, Icons.attach_money, 'Price',
                               'Ksh ${NumberFormat('#,###').format(show.price)}'),
-                          _buildInfoRow(
-                              Icons.person, event_owner, show.event_owner),
+                          _buildInfoRow(context, Icons.person, event_owner, show.event_owner),
                         ],
                       ),
                     ),
@@ -136,15 +160,21 @@ class EventDetails extends StatelessWidget {
                   SizedBox(height: 16),
                   Text(
                     description,
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color: Colors.teal[700],
-                          fontWeight: FontWeight.bold,
-                        ),
+                    style: theme.textTheme.titleLarge?.copyWith(
+                      color: isLightMode 
+                          ? AppColors.textPrimary 
+                          : AppColors.textPrimaryDark,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   SizedBox(height: 8),
                   Text(
                     show.description,
-                    style: Theme.of(context).textTheme.bodyLarge,
+                    style: theme.textTheme.bodyLarge?.copyWith(
+                      color: isLightMode 
+                          ? AppColors.textSecondary 
+                          : AppColors.textSecondaryDark,
+                    ),
                   ),
                   SizedBox(height: 24),
                 ],
@@ -156,10 +186,13 @@ class EventDetails extends StatelessWidget {
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: isLightMode 
+              ? AppColors.surface 
+              : AppColors.surfaceColorDark,
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
+              color: (isLightMode ? Colors.grey : Colors.white)
+                  .withOpacity(isLightMode ? 0.3 : 0.1),
               spreadRadius: 1,
               blurRadius: 5,
               offset: Offset(0, -3),
@@ -172,21 +205,42 @@ class EventDetails extends StatelessWidget {
               child: Material(
                 elevation: 5,
                 borderRadius: BorderRadius.circular(10),
-                child: ElevatedButton.icon(
-                  icon: const Icon(Icons.event_seat),
-                  label: const Text('View Seats'),
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => SeatSelectionScreen(show: show),
-                    ),
+                child: Ink(
+                  decoration: BoxDecoration(
+                    gradient: isLightMode 
+                        ? AppColors.lightButtonGradient 
+                        : AppColors.darkButtonGradient,
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: Colors.teal,
-                    padding: EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(10),
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => SeatSelectionScreen(show: show),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 16),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.event_seat, 
+                              color: isLightMode 
+                                  ? AppColors.textPrimary 
+                                  : AppColors.textPrimaryDark),
+                          SizedBox(width: 8),
+                          Text(
+                            'View Seats',
+                            style: TextStyle(
+                              color: isLightMode 
+                                  ? AppColors.textPrimary 
+                                  : AppColors.textPrimaryDark,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -194,26 +248,47 @@ class EventDetails extends StatelessWidget {
             ),
             SizedBox(width: 16),
             BookTicketWidget(),
-          
           ],
         ),
       ),
     );
   }
 
-  Widget _buildInfoRow(IconData icon, String label, String value) {
+  Widget _buildInfoRow(BuildContext context, IconData icon, String label, String value) {
+    final theme = Theme.of(context);
+    final isLightMode = theme.brightness == Brightness.light;
+    
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: Row(
         children: [
-          Icon(icon, size: 20, color: Colors.teal),
+          Icon(
+            icon, 
+            size: 20, 
+            color: isLightMode 
+                ? AppColors.primaryColor 
+                : AppColors.primaryColorDark
+          ),
           SizedBox(width: 8),
           Text(
             '$label: ',
-            style:
-                TextStyle(fontWeight: FontWeight.bold, color: Colors.teal[700]),
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: isLightMode 
+                  ? AppColors.textPrimary 
+                  : AppColors.textPrimaryDark,
+            ),
           ),
-          Expanded(child: Text(value)),
+          Expanded(
+            child: Text(
+              value,
+              style: TextStyle(
+                color: isLightMode 
+                    ? AppColors.textSecondary 
+                    : AppColors.textSecondaryDark,
+              ),
+            ),
+          ),
         ],
       ),
     );

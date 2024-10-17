@@ -1,5 +1,6 @@
 // payment_details_section.dart
 import 'package:flutter/material.dart';
+import 'package:tickoyako/core/colors.dart';
 import 'custom_list_tile.dart';
 
 class PaymentDetailsSection extends StatelessWidget {
@@ -20,7 +21,9 @@ class PaymentDetailsSection extends StatelessWidget {
             children: [
               CustomListTile(
                   Icons.credit_card, 'Default Card', '**** **** **** 1234'),
-              Divider(),
+                Divider(
+                color: AppColors.textSecondary,
+              ),
               CustomListTile(
                   Icons.account_balance, 'Bank Account', '**** 5678'),
             ],

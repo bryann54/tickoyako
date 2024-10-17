@@ -1,5 +1,6 @@
 // additional_info_section.dart
 import 'package:flutter/material.dart';
+import 'package:tickoyako/core/colors.dart';
 import 'custom_list_tile.dart';
 
 class AdditionalInfoSection extends StatelessWidget {
@@ -19,9 +20,13 @@ class AdditionalInfoSection extends StatelessWidget {
           child: Column(
             children: [
               CustomListTile(Icons.favorite, 'Favorite Events', '5 events'),
-              Divider(),
+                Divider(
+                color: AppColors.textSecondary,
+              ),
               CustomListTile(Icons.history, 'Event History', '12 attended'),
-              Divider(),
+                Divider(
+                color: AppColors.textSecondary,
+              ),
               CustomListTile(Icons.star, 'Loyalty Points', '250 points'),
             ],
           ),

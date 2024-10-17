@@ -30,25 +30,37 @@ class _LogOutButtonState extends State<LogOutButton> {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    final isLightMode = brightness == Brightness.light;
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Material(
         elevation: 5,
+        shadowColor: isLightMode
+            ? Colors.black.withOpacity(0.3)
+            : Colors.white.withOpacity(0.1),
         borderRadius: BorderRadius.circular(10),
+        color: Colors.transparent,
         child: InkWell(
-          onTap: _showLogoutConfirmationDialog, // Show dialog on tap
-          child: Container(
+          onTap: _showLogoutConfirmationDialog,
+          borderRadius: BorderRadius.circular(10),
+          child: Ink(
             height: 50,
             width: double.infinity,
             decoration: BoxDecoration(
-              gradient: AppColors.buttonGradient,
+              gradient: isLightMode
+                  ? AppColors.lightButtonGradient
+                  : AppColors.darkButtonGradient,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Center(
               child: Text(
                 logout,
-                style: const TextStyle(
-                  color: Colors.black54,
+                style: TextStyle(
+                  color: isLightMode
+                      ? AppColors.textPrimary
+                      : AppColors.textPrimaryDark,
                   fontWeight: FontWeight.bold,
                   fontSize: 17,
                 ),
@@ -60,4 +72,3 @@ class _LogOutButtonState extends State<LogOutButton> {
     );
   }
 }
-

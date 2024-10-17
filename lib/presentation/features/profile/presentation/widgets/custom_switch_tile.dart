@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tickoyako/core/colors.dart';
 
 class CustomSwitchTile extends StatelessWidget {
   final BuildContext context;
@@ -25,6 +26,8 @@ class CustomSwitchTile extends StatelessWidget {
         value: value,
         onChanged: onChanged,
         activeColor: Colors.teal,
+        inactiveThumbColor: AppColors.textSecondary,
+
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tickoyako/core/colors.dart';
 import 'custom_list_tile.dart';
 import 'custom_switch_tile.dart';
 
@@ -41,7 +42,9 @@ class _SettingsSectionState extends State<SettingsSection> {
                   });
                 },
               ),
-              const Divider(),
+              const   Divider(
+                color: AppColors.textSecondary,
+              ),
               CustomSwitchTile(
                 context: context,
                 icon: Icons.lock,
@@ -53,10 +56,13 @@ class _SettingsSectionState extends State<SettingsSection> {
                   });
                 },
               ),
-              const Divider(),
+              const   Divider(
+                color: AppColors.textSecondary,
+              ),
               CustomSwitchTile(
                 context: context,
                 icon: Icons.lock,
+                
                 title: 'Dark mode',
                 value: darkModeEnabled,
                 onChanged: (bool value) {
@@ -65,7 +71,9 @@ class _SettingsSectionState extends State<SettingsSection> {
                   });
                 },
               ),
-              const Divider(),
+              const   Divider(
+                color: AppColors.textSecondary,
+              ),
               CustomListTile(Icons.language, 'Language', 'English'),
             ],
           ),

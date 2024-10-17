@@ -1,5 +1,6 @@
 // user_details_section.dart
 import 'package:flutter/material.dart';
+import 'package:tickoyako/core/colors.dart';
 import 'custom_list_tile.dart';
 
 class UserDetailsSection extends StatelessWidget {
@@ -21,10 +22,14 @@ class UserDetailsSection extends StatelessWidget {
           child: Column(
             children: [
               CustomListTile(Icons.phone, 'Phone', '+2547 34 567 890'),
-              Divider(),
+              Divider(
+                color: AppColors.textSecondary,
+              ),
               CustomListTile(
                   Icons.location_on, 'Address', '123 Main St, City, Country'),
-              Divider(),
+                Divider(
+                color: AppColors.textSecondary,
+              ),
               CustomListTile(Icons.cake, 'Birthday', 'January 1, 1990'),
             ],
           ),

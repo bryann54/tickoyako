@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
+import 'package:tickoyako/core/theme/app_theme.dart';
+import 'package:tickoyako/core/theme/theme_controller.dart';
 import 'package:tickoyako/data/repositories/show_repository.dart';
 import 'package:tickoyako/presentation/blocs/shows_bloc/shows_bloc.dart';
 import 'package:tickoyako/presentation/blocs/shows_bloc/shows_event.dart';
 import 'package:tickoyako/presentation/features/bookmark/presentation/bloc/bookmark_bloc.dart';
 import 'package:tickoyako/presentation/screens/shows_screen.dart';
 
+
 void main() {
-  runApp(TickoyakoApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeController(),
+      child: TickoyakoApp(),
+    ),
+  );
 }
 
 class TickoyakoApp extends StatelessWidget {
@@ -15,23 +24,26 @@ class TickoyakoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      // Use MultiBlocProvider to provide both blocs
-      providers: [
-        BlocProvider(
-          create: (context) =>
-              ShowsBloc(showRepository)..add(LoadShows()), // ShowsBloc provider
-        ),
-        BlocProvider(
-          create: (context) => BookmarkBloc(), // BookmarkBloc provider
-        ),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Tickoyako',
-        theme: ThemeData(primarySwatch: Colors.blue),
-        home: ShowListScreen(), // The screen that uses both blocs
-      ),
+    return Consumer<ThemeController>(
+      builder: (context, themeController, child) {
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => ShowsBloc(showRepository)..add(LoadShows()),
+            ),
+            BlocProvider(
+              create: (context) => BookmarkBloc(),
+            ),
+          ],
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: themeController.themeMode,
+            home: ShowListScreen(),
+          ),
+        );
+      },
     );
   }
 }
