@@ -1,4 +1,3 @@
-
 // Theme configuration
 import 'package:flutter/material.dart';
 import 'package:tickoyako/core/colors.dart';
@@ -9,23 +8,22 @@ class AppTheme {
     brightness: Brightness.light,
     primaryColor: AppColors.primaryColor,
     scaffoldBackgroundColor: AppColors.background,
-    colorScheme: ColorScheme.light(
+    colorScheme: const ColorScheme.light(
       primary: AppColors.primaryColor,
       secondary: AppColors.secondaryColor,
       error: AppColors.error,
-      background: AppColors.background,
       surface: AppColors.surface,
     ),
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       bodyLarge: TextStyle(color: AppColors.textPrimary),
       bodyMedium: TextStyle(color: AppColors.textSecondary),
     ),
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.primaryColor,
       foregroundColor: AppColors.secondaryColor,
       elevation: 0,
     ),
-    cardTheme: CardTheme(
+    cardTheme: const CardTheme(
       color: AppColors.surface,
       elevation: 2,
     ),
@@ -36,23 +34,22 @@ class AppTheme {
     brightness: Brightness.dark,
     primaryColor: AppColors.primaryColorDark,
     scaffoldBackgroundColor: AppColors.backgroundDark,
-    colorScheme: ColorScheme.dark(
+    colorScheme: const ColorScheme.dark(
       primary: AppColors.primaryColorDark,
       secondary: AppColors.secondaryColorDark,
       error: AppColors.errorDark,
-      background: AppColors.backgroundDark,
       surface: AppColors.surfaceColorDark,
     ),
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       bodyLarge: TextStyle(color: AppColors.textPrimaryDark),
       bodyMedium: TextStyle(color: AppColors.textSecondaryDark),
     ),
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.surfaceColorDark,
       foregroundColor: AppColors.textPrimaryDark,
       elevation: 0,
     ),
-    cardTheme: CardTheme(
+    cardTheme: const CardTheme(
       color: AppColors.surfaceColorDark,
       elevation: 2,
     ),

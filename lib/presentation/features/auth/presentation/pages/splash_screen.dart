@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tickoyako/core/strings.dart';
-import 'package:tickoyako/presentation/features/auth/presentation/pages/auth_screen.dart';
+import 'package:tickoyako/presentation/features/auth/presentation/widgets/getstarted_button.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
@@ -13,6 +14,8 @@ class _SplashScreenState extends State<SplashScreen>
   late AnimationController _controller;
   late Animation<double> _fadeAnimation;
   late Animation<double> _scaleAnimation;
+  late Animation<Offset> _slideAnimation;
+  bool _isAnimationComplete = false;
 
   @override
   void initState() {
@@ -30,15 +33,26 @@ class _SplashScreenState extends State<SplashScreen>
       CurvedAnimation(parent: _controller, curve: Curves.easeOutBack),
     );
 
+    _slideAnimation = Tween<Offset>(
+      begin: const Offset(1.0, 0.0),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _controller,
+      curve: const Interval(1.0, 1.5, curve: Curves.easeInOut),
+    ));
+
+    // Start the splash animation
     _controller.forward();
 
-    // Navigate to ShowListScreen after animation completes
+    // Trigger the button animation after the main splash animation is done
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
+        setState(() {
+          _isAnimationComplete = true;
+        });
+        // Delay before showing the GetStartedButton
         Future.delayed(const Duration(milliseconds: 500), () {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (_) => const AuthScreen()),
-          );
+          _controller.forward(); // Restart the controller for button animation
         });
       }
     });
@@ -72,6 +86,7 @@ class _SplashScreenState extends State<SplashScreen>
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      const Spacer(flex: 2),
                       const Icon(
                         Icons.event_seat,
                         size: 100,
@@ -93,6 +108,30 @@ class _SplashScreenState extends State<SplashScreen>
                           ),
                         ),
                       ),
+                      const Spacer(flex: 1),
+                      // Add smooth SlideTransition for the GetstartedButton
+                      if (_isAnimationComplete)
+                        SlideTransition(
+                          position: _slideAnimation,
+                          child: FadeTransition(
+                            opacity:
+                                Tween<double>(begin: 0.0, end: 1.0).animate(
+                              CurvedAnimation(
+                                parent: _controller,
+                                curve: const Interval(0.0, 1.0,
+                                    curve: Curves.easeIn),
+                              ),
+                            ),
+                            child: const GetstartedButton(),
+                          ),
+                        ),
+                      const SizedBox(height: 120),
+                          const  Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                                                      children: [Text('terms & conditions apply')],
+                                                    ),
+                            )
                     ],
                   ),
                 ),

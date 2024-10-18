@@ -1,7 +1,6 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:tickoyako/core/strings.dart';
+
 class LoginTab extends StatefulWidget {
   const LoginTab({Key? key}) : super(key: key);
 
@@ -132,7 +131,7 @@ class _LoginTabState extends State<LoginTab> {
                 const SizedBox(width: 16),
                 _buildSocialButton(
                   icon: Icons.facebook,
-
+                  color: Colors.blue,
                   onPressed: () {
                     // Handle Facebook login
                   },
@@ -146,6 +145,7 @@ class _LoginTabState extends State<LoginTab> {
                 ),
               ],
             ),
+            const SizedBox(height: 24),
           ],
         ),
       ),
@@ -154,21 +154,27 @@ class _LoginTabState extends State<LoginTab> {
 
   Widget _buildSocialButton({
     required IconData icon,
+    Color? color, // Optional icon color
     required VoidCallback onPressed,
   }) {
-    return InkWell(
-      onTap: onPressed,
+    return Material(
+      elevation: 5,
       borderRadius: BorderRadius.circular(12),
-      child: Material(
-        elevation: 5,
-         borderRadius: BorderRadius.circular(12),
+      child: InkWell(
+        onTap: onPressed,
+        borderRadius: BorderRadius.circular(12),
         child: Container(
-          
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
- borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(12),
           ),
-          child: Icon(icon, size: 40),
+          // Apply the optional color here
+          child: Icon(
+            icon,
+            size: 50,
+            color: color ??
+                Colors.black, // Default to black if no color is provided
+          ),
         ),
       ),
     );

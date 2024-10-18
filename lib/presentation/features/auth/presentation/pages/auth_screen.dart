@@ -63,54 +63,57 @@ class AuthView extends StatelessWidget {
                 ),
                 const SizedBox(height: 32),
                 // Tab Bar
-         Container(
-  margin: const EdgeInsets.symmetric(horizontal: 24),
-  height: 60, // Increased height for better visibility
-  decoration: BoxDecoration(
-    color: Colors.grey[200],
-    borderRadius: BorderRadius.circular(15),
-  ),
-  child: TabBar(
-    padding: const EdgeInsets.all(8), // Increased padding
-    indicator: BoxDecoration(
-      color: Theme.of(context).primaryColor,
-      borderRadius: BorderRadius.circular(12), // Increased border radius
-      boxShadow: [
-        BoxShadow(
-          color: Theme.of(context).primaryColor.withOpacity(0.3),
-          blurRadius: 8,
-          offset: const Offset(0, 2),
-        ),
-      ],
-    ),
-    labelColor: Colors.white,
-    unselectedLabelColor: Colors.grey[800],
-    labelStyle: const TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.bold,
-    ),
-    unselectedLabelStyle: const TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w500,
-    ),
-    tabs: [
-      Tab(
-        child: Container(
-          width: double.infinity,
-          alignment: Alignment.center,
-          child: const Text('Login'),
-        ),
-      ),
-      Tab(
-        child: Container(
-          width: double.infinity,
-          alignment: Alignment.center,
-          child: const Text('Sign Up'),
-        ),
-      ),
-    ],
-  ),
-),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 24),
+                  height: 60, // Increased height for better visibility
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: TabBar(
+                    padding: const EdgeInsets.all(8), // Increased padding
+                    indicator: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius:
+                          BorderRadius.circular(12), // Increased border radius
+                      boxShadow: [
+                        BoxShadow(
+                          color:
+                              Theme.of(context).primaryColor.withOpacity(0.3),
+                          blurRadius: 8,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    indicatorColor: Colors.transparent,
+                    labelColor: Colors.white,
+                    unselectedLabelColor: Colors.grey[800],
+                    labelStyle: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    unselectedLabelStyle: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    tabs: [
+                      Tab(
+                        child: Container(
+                          width: double.infinity,
+                          alignment: Alignment.center,
+                          child: const Text('Login'),
+                        ),
+                      ),
+                      Tab(
+                        child: Container(
+                          width: double.infinity,
+                          alignment: Alignment.center,
+                          child: const Text('Sign Up'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 const Expanded(
                   child: TabBarView(
                     children: [

@@ -34,29 +34,29 @@ class ProfileAppBar extends StatelessWidget {
                   SizedBox(height: 8),
                   Row(
                     children: [
-                   Opacity(
-  opacity: percentage.clamp(0.0, 1.0),
-  child: Container(
-    width: avatarSize / 1.25, 
-    height: avatarSize / 1.25,
-    decoration: BoxDecoration(
-      shape: BoxShape.circle,
-      border: Border.all(
-        color: Colors.white, 
-        width: 1.0, 
-      ),
-    ),
-    child: CircleAvatar(
-      radius: avatarSize / 2.5,
-      backgroundColor: Colors.teal.shade200,
-      child: Icon(
-        Icons.person,
-        size: avatarSize / 2,
-        color: Colors.white,
-      ),
-    ),
-  ),
-                   ),
+                      Opacity(
+                        opacity: percentage.clamp(0.0, 1.0),
+                        child: Container(
+                          width: avatarSize / 1.25,
+                          height: avatarSize / 1.25,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.white,
+                              width: 1.0,
+                            ),
+                          ),
+                          child: CircleAvatar(
+                            radius: avatarSize / 2.5,
+                            backgroundColor: Colors.teal.shade200,
+                            child: Icon(
+                              Icons.person,
+                              size: avatarSize / 2,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
                       SizedBox(width: 16),
                       Expanded(
                         child: Opacity(
@@ -73,7 +73,7 @@ class ProfileAppBar extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                               email_txt,
+                                email_txt,
                                 style: TextStyle(
                                   color: Colors.white.withOpacity(0.8),
                                   fontSize: 14,
