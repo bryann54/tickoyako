@@ -1,6 +1,7 @@
 // auth_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tickoyako/core/strings.dart';
 import 'package:tickoyako/presentation/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:tickoyako/presentation/features/auth/presentation/widgets/login_tab_widget.dart';
 import 'package:tickoyako/presentation/features/auth/presentation/widgets/signup_tab_widget.dart';
@@ -56,7 +57,7 @@ class AuthView extends StatelessWidget {
                 const SizedBox(height: 24),
                 // Welcome Text
                 Text(
-                  'Welcome Back',
+                 welcome_text,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -101,14 +102,14 @@ class AuthView extends StatelessWidget {
                         child: Container(
                           width: double.infinity,
                           alignment: Alignment.center,
-                          child: const Text('Login'),
+                          child: const Text(login),
                         ),
                       ),
                       Tab(
                         child: Container(
                           width: double.infinity,
                           alignment: Alignment.center,
-                          child: const Text('Sign Up'),
+                          child: const Text(signup),
                         ),
                       ),
                     ],

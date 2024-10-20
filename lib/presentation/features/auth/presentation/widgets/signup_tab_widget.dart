@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tickoyako/core/colors.dart';
+import 'package:tickoyako/core/strings.dart';
 import 'package:tickoyako/presentation/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:tickoyako/presentation/features/auth/presentation/bloc/auth_event.dart';
 
@@ -36,15 +38,16 @@ class _SignUpTabState extends State<SignUpTab> {
             TextFormField(
               controller: _nameController,
               decoration: InputDecoration(
-                labelText: 'Full Name',
-                prefixIcon: const Icon(Icons.person_outline),
+                labelText: fullname,
+                 labelStyle:  const TextStyle(color: AppColors.primaryColor),
+                prefixIcon: const Icon(Icons.person_outline,color: AppColors.primaryColor,),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
               validator: (value) {
                 if (value?.isEmpty ?? true) {
-                  return 'Please enter your name';
+                  return name_text;
                 }
                 return null;
               },
@@ -53,15 +56,18 @@ class _SignUpTabState extends State<SignUpTab> {
             TextFormField(
               controller: _emailController,
               decoration: InputDecoration(
-                labelText: 'Email',
-                prefixIcon: const Icon(Icons.email_outlined),
+                labelText: email,
+                 labelStyle:  const TextStyle(color: AppColors.primaryColor),
+                prefixIcon: const Icon(Icons.email_outlined,
+                  color: AppColors.primaryColor,
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
               validator: (value) {
                 if (value?.isEmpty ?? true) {
-                  return 'Please enter your email';
+                  return email_hint;
                 }
                 return null;
               },
@@ -71,8 +77,11 @@ class _SignUpTabState extends State<SignUpTab> {
               controller: _passwordController,
               obscureText: _obscurePassword,
               decoration: InputDecoration(
-                labelText: 'Password',
-                prefixIcon: const Icon(Icons.lock_outline),
+                labelText: password,
+                labelStyle:  const TextStyle(color: AppColors.primaryColor),
+                prefixIcon: const Icon(Icons.lock_outline,
+                  color: AppColors.primaryColor,
+                ),
                 suffixIcon: IconButton(
                   icon: Icon(_obscurePassword
                       ? Icons.visibility_outlined
@@ -89,7 +98,7 @@ class _SignUpTabState extends State<SignUpTab> {
               ),
               validator: (value) {
                 if (value?.isEmpty ?? true) {
-                  return 'Please enter your password';
+                  return password_hint;
                 }
                 return null;
               },
@@ -125,7 +134,7 @@ class _SignUpTabState extends State<SignUpTab> {
                             width: 24,
                             child: CircularProgressIndicator.adaptive(),
                           )
-                        : const Text('Sign Up'),
+                        : const Text(signup),
                   );
                 },
               ),

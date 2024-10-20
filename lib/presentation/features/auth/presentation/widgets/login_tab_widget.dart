@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tickoyako/core/colors.dart';
 import 'package:tickoyako/core/strings.dart';
 
 class LoginTab extends StatefulWidget {
@@ -36,8 +37,14 @@ class _LoginTabState extends State<LoginTab> {
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                 labelText: email,
-                hintText: email_txt,
-                prefixIcon: const Icon(Icons.email_outlined),
+                labelStyle:const TextStyle(color: AppColors.primaryColor),
+                hintText: email_hint,
+                
+                hintStyle: 
+                const TextStyle(fontSize: 14, color: Colors.grey),
+                prefixIcon: const Icon(Icons.email_outlined,
+                    color: AppColors.primaryColor),
+               
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -55,12 +62,13 @@ class _LoginTabState extends State<LoginTab> {
               controller: _passwordController,
               obscureText: _obscurePassword,
               decoration: InputDecoration(
-                labelText: 'Password',
-                hintText: 'Enter your password',
-                prefixIcon: const Icon(Icons.lock_outline),
+                hintText: password_hint,
+                 labelStyle: const TextStyle(color: AppColors.primaryColor),
+                 hintStyle: const TextStyle(fontSize: 14, color: Colors.grey),
+                prefixIcon: const Icon(Icons.lock_outline,color: AppColors.primaryColor,),
                 suffixIcon: IconButton(
                   icon: Icon(
-                    _obscurePassword
+                    _obscurePassword 
                         ? Icons.visibility_outlined
                         : Icons.visibility_off_outlined,
                   ),
@@ -76,7 +84,7 @@ class _LoginTabState extends State<LoginTab> {
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter your password';
+                  return ;
                 }
                 return null;
               },
@@ -89,7 +97,7 @@ class _LoginTabState extends State<LoginTab> {
                 onPressed: () {
                   // Handle forgot password
                 },
-                child: const Text('Forgot Password?'),
+                child: const Text(forgot_password),
               ),
             ),
             const SizedBox(height: 24),
@@ -109,7 +117,7 @@ class _LoginTabState extends State<LoginTab> {
                   ),
                 ),
                 child: const Text(
-                  'Login',
+                  login,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

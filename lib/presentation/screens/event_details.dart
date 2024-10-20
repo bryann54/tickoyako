@@ -127,7 +127,7 @@ class EventDetails extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   Card(
                     elevation: 2,
                     color: isLightMode
@@ -142,7 +142,7 @@ class EventDetails extends StatelessWidget {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(16),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -160,7 +160,7 @@ class EventDetails extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   Text(
                     description,
                     style: theme.textTheme.titleLarge?.copyWith(
@@ -170,7 +170,7 @@ class EventDetails extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                     show.description,
                     style: theme.textTheme.bodyLarge?.copyWith(
@@ -179,7 +179,7 @@ class EventDetails extends StatelessWidget {
                           : AppColors.textSecondaryDark,
                     ),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                 ],
               ),
             ),
@@ -187,7 +187,7 @@ class EventDetails extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: isLightMode ? AppColors.surface : AppColors.surfaceColorDark,
           boxShadow: [
@@ -196,7 +196,7 @@ class EventDetails extends StatelessWidget {
                   .withOpacity(isLightMode ? 0.3 : 0.1),
               spreadRadius: 1,
               blurRadius: 5,
-              offset: Offset(0, -3),
+              offset: const Offset(0, -3),
             ),
           ],
         ),
@@ -222,7 +222,7 @@ class EventDetails extends StatelessWidget {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 16),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -230,7 +230,7 @@ class EventDetails extends StatelessWidget {
                               color: isLightMode
                                   ? AppColors.textPrimaryDark
                                   : AppColors.textPrimaryDark),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           Text(
                             'View Seats',
                             style: TextStyle(
@@ -247,8 +247,8 @@ class EventDetails extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: 16),
-            BookTicketWidget(),
+            const SizedBox(width: 16),
+            const BookTicketWidget(),
           ],
         ),
       ),
@@ -269,7 +269,7 @@ class EventDetails extends StatelessWidget {
               color: isLightMode
                   ? AppColors.primaryColor
                   : AppColors.primaryColorDark),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           Text(
             '$label: ',
             style: TextStyle(
