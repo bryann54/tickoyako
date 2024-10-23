@@ -13,7 +13,8 @@ class ShowRepository {
         imgUrl:
             'https://m.media-amazon.com/images/M/MV5BNjExMjQ1YTctNmM0OC00YWE5LWJkNmUtNWUxOTFiNDFiMjAwXkEyXkFqcGc@._V1_.jpg',
         title: 'Kevin Hart Reality check',
-        description:   'Comedy is a genre that consists of discourses or works intended to be humorous or amusing by inducing laughter, especially in theatre, film, stand-up comedy, television, radio, books, or any other entertainment medium. The term originated in',
+        description:
+            'Comedy is a genre that consists of discourses or works intended to be humorous or amusing by inducing laughter, especially in theatre, film, stand-up comedy, television, radio, books, or any other entertainment medium. The term originated in',
         date: DateTime.now(),
         venue: 'kenya Cultural centre (KNT)',
       ),
@@ -78,8 +79,7 @@ class ShowRepository {
         contact: '+2547001111112',
         event_owner: 'marvel studios',
         id: '6',
-        imgUrl:
-            'https://i.ytimg.com/vi/fos4xD4CH7o/maxresdefault.jpg',
+        imgUrl: 'https://i.ytimg.com/vi/fos4xD4CH7o/maxresdefault.jpg',
         type: 'Movie',
         title: 'The Phantom of the Opera',
         description:

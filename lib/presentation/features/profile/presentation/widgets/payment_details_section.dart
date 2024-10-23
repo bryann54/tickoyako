@@ -21,7 +21,7 @@ class PaymentDetailsSection extends StatelessWidget {
             children: [
               CustomListTile(
                   Icons.credit_card, 'Default Card', '**** **** **** 1234'),
-                Divider(
+              Divider(
                 color: AppColors.textSecondary,
               ),
               CustomListTile(

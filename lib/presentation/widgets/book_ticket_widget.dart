@@ -22,7 +22,7 @@ class BookTicketWidget extends StatelessWidget {
               barrierColor: Colors.black.withOpacity(0.5),
               transitionDuration: const Duration(milliseconds: 700),
               pageBuilder: (context, animation, secondaryAnimation) {
-                return const PaymentModal(); 
+                return const PaymentModal();
               },
               transitionBuilder:
                   (context, animation, secondaryAnimation, child) {

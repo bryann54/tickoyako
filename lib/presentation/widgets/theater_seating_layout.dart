@@ -120,4 +120,3 @@ class _TheaterSeatingLayoutState extends State<TheaterSeatingLayout> {
     );
   }
 }
-
