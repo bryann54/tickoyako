@@ -100,7 +100,8 @@ class _LoginTabState extends State<LoginTab> {
                 child: const Text(forgot_password),
               ),
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 14),
+       
             // Login Button
             SizedBox(
               width: double.infinity,
@@ -125,66 +126,69 @@ class _LoginTabState extends State<LoginTab> {
                 ),
               ),
             ),
-            const SizedBox(height: 24),
+            // const SizedBox(height: 34),
+            //    const  Text(login_options,style: TextStyle(fontSize: 20,fontWeight:FontWeight.bold),),
+            //      const SizedBox(height: 14,),
             // Social Login Options
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildSocialButton(
-                  icon: Icons.g_mobiledata,
-                  onPressed: () {
-                    // Handle Google login
-                  },
-                ),
-                const SizedBox(width: 16),
-                _buildSocialButton(
-                  icon: Icons.facebook,
-                  color: Colors.blue,
-                  onPressed: () {
-                    // Handle Facebook login
-                  },
-                ),
-                const SizedBox(width: 16),
-                _buildSocialButton(
-                  icon: Icons.apple,
-                  onPressed: () {
-                    // Handle Apple login
-                  },
-                ),
-              ],
-            ),
-            const SizedBox(height: 24),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     _buildSocialButton(
+            //       icon: Icons.g_mobiledata,
+            //       onPressed: () {
+            //         // Handle Google login
+            //       },
+            //     ),
+            //     const SizedBox(width: 16),
+            //     _buildSocialButton(
+            //       icon: Icons.facebook,
+            //       color: Colors.blue,
+            //       onPressed: () {
+            //         // Handle Facebook login
+            //       },
+            //     ),
+            //     const SizedBox(width: 16),
+            //     _buildSocialButton(
+            //       icon: Icons.apple,
+            //       onPressed: () {
+                  
+            //       },
+            //     ),
+            //   ],
+            // ),
+            // const SizedBox(height: 24),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildSocialButton({
-    required IconData icon,
-    Color? color, // Optional icon color
-    required VoidCallback onPressed,
-  }) {
-    return Material(
-      elevation: 5,
-      borderRadius: BorderRadius.circular(12),
-      child: InkWell(
-        onTap: onPressed,
-        borderRadius: BorderRadius.circular(12),
-        child: Container(
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          // Apply the optional color here
-          child: Icon(
-            icon,
-            size: 50,
-            color: color ??
-                Colors.black, // Default to black if no color is provided
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget _buildSocialButton({
+  //   required IconData icon,
+  //   Color? color, // Optional icon color
+  //   required VoidCallback onPressed,
+  // }) {
+  //   return Material(
+  //     elevation: 5,
+  //     borderRadius: BorderRadius.circular(12),
+  //     child: InkWell(
+  //       onTap: onPressed,
+  //       borderRadius: BorderRadius.circular(12),
+  //       child: Container(
+  //         padding: const EdgeInsets.all(12),
+  //         decoration: BoxDecoration(
+  //           borderRadius: BorderRadius.circular(12),
+  //         ),
+  //         // Apply the optional color here
+  //         child: Icon(
+  //           icon,
+  //           size: 50,
+  //           color: color ??
+  //               Colors.black, // Default to black if no color is provided
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
+
 }

@@ -4,6 +4,7 @@ import 'package:tickoyako/core/colors.dart';
 import 'package:tickoyako/core/strings.dart';
 import 'package:tickoyako/presentation/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:tickoyako/presentation/features/auth/presentation/bloc/auth_event.dart';
+import 'package:tickoyako/presentation/features/auth/presentation/widgets/social_buttons.dart';
 
 class SignUpTab extends StatefulWidget {
   const SignUpTab({Key? key}) : super(key: key);
@@ -139,9 +140,45 @@ class _SignUpTabState extends State<SignUpTab> {
                 },
               ),
             ),
+                   const SizedBox(height: 34),
+            const Text(
+              login_options,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 14,
+            ),
+            // Social Login Options
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SocialButton(
+                  icon: Icons.g_mobiledata,
+                 onPressed: () {
+                    context.read<AuthBloc>().add(GoogleSignInRequested());
+                  },
+                ),
+                const SizedBox(width: 16),
+                SocialButton(
+                  icon: Icons.facebook,
+                  color: Colors.blue,
+                  onPressed: () {
+                    // Handle Facebook login
+                  },
+                ),
+                const SizedBox(width: 16),
+                SocialButton(
+                  icon: Icons.apple,
+                  onPressed: () {},
+                ),
+              ],
+            ),
+            const SizedBox(height: 24),
           ],
+      
         ),
       ),
     );
   }
+
 }
