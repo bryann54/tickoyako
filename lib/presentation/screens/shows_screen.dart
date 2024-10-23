@@ -54,7 +54,8 @@ class _ShowListScreenState extends State<ShowListScreen> {
                   const CustomSearchBar(),
                 ],
               ),
-              titlePadding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+              titlePadding:
+                  const EdgeInsets.only(left: 16, right: 16, bottom: 16),
               background: Container(color: Colors.teal),
             ),
           ),

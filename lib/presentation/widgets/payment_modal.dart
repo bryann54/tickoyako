@@ -90,7 +90,7 @@ class _PaymentModalState extends State<PaymentModal> {
                   if (value.length > 10) {
                     return valid_number;
                   }
-                  return null; 
+                  return null;
                 },
               ),
               const SizedBox(height: 16),

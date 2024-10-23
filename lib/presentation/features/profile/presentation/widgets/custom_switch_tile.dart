@@ -27,7 +27,6 @@ class CustomSwitchTile extends StatelessWidget {
         onChanged: onChanged,
         activeColor: Colors.teal,
         inactiveThumbColor: AppColors.textSecondary,
-
       ),
     );
   }

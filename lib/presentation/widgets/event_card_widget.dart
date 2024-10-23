@@ -41,17 +41,13 @@ class _EventCardWidgetState extends State<EventCardWidget> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-               
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      
                       children: [
-                           Hero(
-                          tag:
-                              'event_image_${show.id}', 
+                        Hero(
+                          tag: 'event_image_${show.id}',
                           child: ClipRRect(
-                           
                             child: SizedBox(
                               height: 150,
                               width: double.infinity,
@@ -66,11 +62,13 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
                             children: [
-                              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     show.title,
-                                   style: Theme.of(context)
+                                    style: Theme.of(context)
                                         .textTheme
                                         .bodyLarge
                                         ?.copyWith(
@@ -78,7 +76,7 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                                           fontWeight: FontWeight.bold,
                                         ),
                                   ),
-                                    Container(
+                                  Container(
                                     decoration: BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
@@ -103,7 +101,7 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                                   ),
                                 ],
                               ),
-                                   const SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               Text(
                                 show.description,
                                 style: TextStyle(
@@ -136,8 +134,6 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                                       ),
                                     ],
                                   ),
-                         
-                                
                                 ],
                               ),
                               const SizedBox(width: 5),
@@ -167,12 +163,9 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                                   ],
                                 ),
                               ),
-                        
-                
                             ],
                           ),
                         ),
-                   
                       ],
                     ),
                   ),

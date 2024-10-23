@@ -42,7 +42,7 @@ class _SettingsSectionState extends State<SettingsSection> {
                   });
                 },
               ),
-              const   Divider(
+              const Divider(
                 color: AppColors.textSecondary,
               ),
               CustomSwitchTile(
@@ -56,13 +56,12 @@ class _SettingsSectionState extends State<SettingsSection> {
                   });
                 },
               ),
-              const   Divider(
+              const Divider(
                 color: AppColors.textSecondary,
               ),
               CustomSwitchTile(
                 context: context,
                 icon: Icons.lock,
-                
                 title: dark_mode,
                 value: darkModeEnabled,
                 onChanged: (bool value) {
@@ -71,7 +70,7 @@ class _SettingsSectionState extends State<SettingsSection> {
                   });
                 },
               ),
-              const   Divider(
+              const Divider(
                 color: AppColors.textSecondary,
               ),
               CustomListTile(Icons.language, lang, eng),

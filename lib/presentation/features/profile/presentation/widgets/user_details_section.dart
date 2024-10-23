@@ -27,7 +27,7 @@ class UserDetailsSection extends StatelessWidget {
               ),
               CustomListTile(
                   Icons.location_on, 'Address', '123 Main St, City, Country'),
-                Divider(
+              Divider(
                 color: AppColors.textSecondary,
               ),
               CustomListTile(Icons.cake, 'Birthday', 'January 1, 1990'),

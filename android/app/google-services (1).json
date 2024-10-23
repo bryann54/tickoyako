@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "98107921929",
+    "project_id": "tickoyako",
+    "storage_bucket": "tickoyako.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98107921929:android:00b4d63853f7ed66518ad8",
+        "android_client_info": {
+          "package_name": "com.example.tickoyako"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4FHUpB_QeFpZ5n9mX8j_WM50xcN1ro1k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
