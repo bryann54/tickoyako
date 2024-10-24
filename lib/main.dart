@@ -7,7 +7,7 @@ import 'package:tickoyako/data/repositories/show_repository.dart';
 import 'package:tickoyako/presentation/blocs/shows_bloc/shows_bloc.dart';
 import 'package:tickoyako/presentation/blocs/shows_bloc/shows_event.dart';
 import 'package:tickoyako/presentation/features/bookmark/presentation/bloc/bookmark_bloc.dart';
-import 'package:tickoyako/presentation/screens/shows_screen.dart';
+import 'package:tickoyako/presentation/features/home_screen/presentation/pages/intro_screen.dart';
 
 
 void main() {
@@ -40,7 +40,7 @@ class TickoyakoApp extends StatelessWidget {
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
             themeMode: themeController.themeMode,
-            home: ShowListScreen(),
+            home: IntroScreens(),
           ),
         );
       },

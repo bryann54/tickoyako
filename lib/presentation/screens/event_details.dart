@@ -12,7 +12,7 @@ import 'package:tickoyako/presentation/widgets/book_ticket_widget.dart';
 class EventDetails extends StatelessWidget {
   final ShowModel show;
 
-  const EventDetails({Key? key, required this.show}) : super(key: key);
+  const EventDetails({super.key, required this.show});
 
   @override
   Widget build(BuildContext context) {
@@ -294,3 +294,4 @@ class EventDetails extends StatelessWidget {
     );
   }
 }
+

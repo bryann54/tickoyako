@@ -37,3 +37,6 @@ const eng='English';
 const email_txt= 'user@gmail.com';
 const user_name='User name';
 const apply ='Apply';
+const done='Done';
+const next ='Next';
+const skip ='Skip';
