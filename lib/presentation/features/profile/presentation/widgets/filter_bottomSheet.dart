@@ -46,13 +46,12 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
     _selectedDate = _filters['date'];
   }
 
-@override
+  @override
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.75,
       decoration: BoxDecoration(
-        color: Colors.white
-            .withOpacity(0.8), 
+        color: Colors.white.withOpacity(0.8),
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Column(
@@ -91,7 +90,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.5), 
+        color: Colors.white.withOpacity(0.5),
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
         boxShadow: [
           BoxShadow(
@@ -160,7 +159,6 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
               _filters['categories'] = categories;
             });
           },
-          
           selectedColor: Colors.teal.shade100,
           checkmarkColor: Colors.teal.shade700,
         );
@@ -253,7 +251,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-         color: Colors.white.withOpacity(0.5), 
+        color: Colors.white.withOpacity(0.5),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
@@ -262,9 +260,9 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
           ),
         ],
       ),
-  child: Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Row(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
           children: [
             Expanded(
               child: GestureDetector(
@@ -278,7 +276,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                   ),
                   alignment: Alignment.center,
                   child: const Text(
-                   cancel,
+                    cancel,
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
@@ -308,8 +306,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
             ),
           ],
         ),
-  ),
-
+      ),
     );
   }
 

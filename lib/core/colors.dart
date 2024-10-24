@@ -56,5 +56,3 @@ class AppColors {
   static const Color overlay4dp = Color(0x0AFFFFFF);
   static const Color overlay8dp = Color(0x0FFFFFFF);
 }
-
-
