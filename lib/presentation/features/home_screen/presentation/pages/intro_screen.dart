@@ -157,7 +157,7 @@ class _IntroScreensState extends State<IntroScreens> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Lottie.network(
-                        'https://lottie.host/0633cd5b-1351-4492-905a-cb7f4d672aa1/IbvrV6E9QG.json',
+                        'https://lottie.host/6808efb5-1c1b-41f1-b167-8b3c87bc92a1/NTEfVBh8z1.json',
                         height: 300,
                       ),
                       const SizedBox(height: 32),
@@ -283,3 +283,4 @@ class _IntroScreensState extends State<IntroScreens> {
     );
   }
 }
+

@@ -49,3 +49,5 @@ const forgot_password='Forgot Password?';
 const name_text= 'Please enter your name';
 const email_hint='Please enter your email';
 const fullname= 'Full Name';
+const no_notification='No notifications yet..';
+const no_bookmarks='No bookmarks yet...';

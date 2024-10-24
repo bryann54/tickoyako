@@ -21,7 +21,23 @@ class Bookmarks extends StatelessWidget {
       body: BlocBuilder<BookmarkBloc, BookmarkState>(
         builder: (context, state) {
           if (state.bookmarkedShows.isEmpty) {
-            return const Center(child: Text('No bookmarked shows'));
+            return  Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 100,
+                    child: Image.asset(
+                      'assets/movie.png',
+                    ),
+                  ),
+                  Text(
+                    no_bookmarks,
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ],
+              ),
+            );
           }
           return ListView.builder(
             itemCount: state.bookmarkedShows.length,
