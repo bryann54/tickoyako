@@ -51,3 +51,4 @@ const email_hint='Please enter your email';
 const fullname= 'Full Name';
 const no_notification='No notifications yet..';
 const no_bookmarks='No bookmarks yet...';
+const event_details='Event Details';
