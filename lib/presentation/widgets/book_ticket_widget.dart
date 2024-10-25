@@ -11,10 +11,8 @@ class BookTicketWidget extends StatelessWidget {
       child: Material(
         elevation: 5,
         borderRadius: BorderRadius.circular(10),
-        child: ElevatedButton.icon(
-          icon: const Icon(Icons.confirmation_number),
-          label: const Text(book_ticket),
-          onPressed: () {
+        child: InkWell(
+          onTap: () {
             showGeneralDialog(
               context: context,
               barrierDismissible: true,
@@ -36,12 +34,34 @@ class BookTicketWidget extends StatelessWidget {
               },
             );
           },
-          style: ElevatedButton.styleFrom(
-            foregroundColor: Colors.white,
-            backgroundColor: Colors.blue,
+          borderRadius: BorderRadius.circular(10),
+          child: Container(
             padding: const EdgeInsets.symmetric(vertical: 16),
-            shape: RoundedRectangleBorder(
+            decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
+              gradient: LinearGradient(
+                colors: [Colors.blueGrey.shade900, Colors.lightBlue.shade900],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
+            child:const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children:  [
+                Icon(
+                  Icons.confirmation_number,
+                  color: Colors.white,
+                ),
+                SizedBox(width: 8),
+                Text(
+                  book_ticket,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+              ],
             ),
           ),
         ),

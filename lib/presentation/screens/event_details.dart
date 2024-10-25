@@ -7,6 +7,7 @@ import 'package:tickoyako/presentation/features/bookmark/presentation/bloc/bookm
 import 'package:tickoyako/presentation/features/bookmark/presentation/bloc/bookmark_event.dart';
 import 'package:tickoyako/presentation/screens/seat_selection.dart';
 import 'package:tickoyako/presentation/widgets/book_ticket_widget.dart';
+import 'package:tickoyako/presentation/widgets/custom_snackbar_widget.dart';
 
 class EventDetails extends StatefulWidget {
   final ShowModel show;
@@ -117,7 +118,7 @@ class _EventDetailsState extends State<EventDetails>
               ),
             ),
             actions: [
-              IconButton(
+          IconButton(
                 icon: AnimatedSwitcher(
                   duration: const Duration(milliseconds: 300),
                   transitionBuilder: (child, animation) {
@@ -131,11 +132,30 @@ class _EventDetailsState extends State<EventDetails>
                   ),
                 ),
                 onPressed: () {
-                  context.read<BookmarkBloc>().add(
-                        isBookmarked ? RemoveBookmark(show) : AddBookmark(show),
-                      );
+                  // Add/remove the bookmark based on the current state
+                  if (isBookmarked) {
+                    context.read<BookmarkBloc>().add(RemoveBookmark(show));
+
+                    // Show snackbar for removing bookmark
+                    CustomAnimatedSnackbar.show(
+                      context: context,
+                      message: '${widget.show.type} removed to bookmarks',
+                      icon: Icons.bookmark_remove,
+                    backgroundColor: const Color.fromARGB(190, 0, 0, 0),
+                    );
+                  } else {
+                    context.read<BookmarkBloc>().add(AddBookmark(show));
+
+                    // Show snackbar for adding bookmark
+                    CustomAnimatedSnackbar.show(
+                      context: context,
+                      message: '${widget.show.type} added to bookmarks',
+                      icon: Icons.bookmark,
+                    backgroundColor: const Color.fromARGB(190, 0, 0, 0),
+                    );
+                  }
                 },
-              ),
+              )
             ],
           ),
           SliverToBoxAdapter(
@@ -309,10 +329,10 @@ class _EventDetailsState extends State<EventDetails>
   Widget _buildInfoRow(BuildContext context, IconData icon, String label,
       String value, Color iconColor) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Row(
         children: [
-          Icon(icon, size: 20, color: iconColor),
+          Icon(icon, size: 24, color: iconColor),
           const SizedBox(width: 12),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -320,7 +340,7 @@ class _EventDetailsState extends State<EventDetails>
               Text(
                 label,
                 style: const TextStyle(
-                  fontSize: 14,
+                  fontSize: 12,
                   color: Colors.grey,
                 ),
               ),
@@ -328,10 +348,11 @@ class _EventDetailsState extends State<EventDetails>
               Text(
                 value,
                 style: const TextStyle(
-                  fontSize: 14,
+                  fontSize: 12,
                   fontWeight: FontWeight.w500,
                 ),
               ),
+            
             ],
           ),
         ],
