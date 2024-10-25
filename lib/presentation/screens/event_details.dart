@@ -140,7 +140,7 @@ class _EventDetailsState extends State<EventDetails>
                     CustomAnimatedSnackbar.show(
                       context: context,
                       message: '${widget.show.type} removed to bookmarks',
-                      icon: Icons.bookmark_remove,
+                      icon: Icons.bookmark_outline,
                     backgroundColor: const Color.fromARGB(190, 0, 0, 0),
                     );
                   } else {
