@@ -26,7 +26,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               height: 100,
               child: Image.asset(
                 'assets/movie.png',
-              ),
+              ), 
             ),
             Text(no_notification,style: TextStyle(fontSize: 15),),
           ],
