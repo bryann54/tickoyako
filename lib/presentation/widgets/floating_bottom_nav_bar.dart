@@ -20,6 +20,7 @@ class _FloatingBottomNavBarState extends State<FloatingBottomNavBar>
     with SingleTickerProviderStateMixin {
   late int _currentPage;
   late TabController _tabController;
+  bool _isVisible = true;
 
   @override
   void initState() {
@@ -34,6 +35,22 @@ class _FloatingBottomNavBarState extends State<FloatingBottomNavBar>
       setState(() {
         _currentPage = _tabController.index;
       });
+    }
+  }
+
+  void _handleScroll(ScrollNotification notification) {
+    if (notification is ScrollUpdateNotification) {
+      if (notification.scrollDelta == null) return;
+
+      if (notification.scrollDelta! > 0) {
+        if (_isVisible) {
+          setState(() => _isVisible = false);
+        }
+      } else if (notification.scrollDelta! < 0) {
+        if (!_isVisible) {
+          setState(() => _isVisible = true);
+        }
+      }
     }
   }
 
@@ -60,13 +77,22 @@ class _FloatingBottomNavBarState extends State<FloatingBottomNavBar>
             borderRadius: BorderRadius.circular(50),
             duration: const Duration(milliseconds: 200),
             hideOnScroll: true,
-            body: (context, controller) => TabBarView(
-              controller: _tabController,
-              dragStartBehavior: DragStartBehavior.down,
-              physics: const BouncingScrollPhysics(),
-              children: widget.children,
+            body: (context, controller) =>
+                NotificationListener<ScrollNotification>(
+              onNotification: (notification) {
+                _handleScroll(notification);
+                return true;
+              },
+              child: TabBarView(
+                controller: _tabController,
+                dragStartBehavior: DragStartBehavior.down,
+                physics: const BouncingScrollPhysics(),
+                children: widget.children,
+              ),
             ),
-            child: Container(
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 200),
+              height: _isVisible ? 60 : 0,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
@@ -92,7 +118,6 @@ class _FloatingBottomNavBarState extends State<FloatingBottomNavBar>
                   _buildTab(Icons.bookmark_border, 'Bookmark', 1),
                   _buildTab(Icons.notifications, 'Notifications', 2),
                   _buildTab(Icons.person, 'Profile', 3),
-                  
                 ],
               ),
             ),
@@ -105,7 +130,7 @@ class _FloatingBottomNavBarState extends State<FloatingBottomNavBar>
   Widget _buildTab(IconData icon, String label, int index) {
     final isSelected = _currentPage == index;
     return Tab(
-      height: 60,
+      height: 50,
       icon: Icon(
         icon,
         color: isSelected ? Colors.teal.shade900 : Colors.white,
