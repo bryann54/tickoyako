@@ -16,21 +16,18 @@ class TickoyakoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      // Use MultiBlocProvider to provide both blocs
       providers: [
         BlocProvider(
           create: (context) =>
-              ShowsBloc(showRepository)..add(LoadShows()), // ShowsBloc provider
+              ShowsBloc(showRepository)..add(LoadShows()),
         ),
         BlocProvider(
-          create: (context) => BookmarkBloc(), // BookmarkBloc provider
+          create: (context) => BookmarkBloc(),
         ),
       ],
-      child: MaterialApp(
+      child:const MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Tickoyako',
-        theme: ThemeData(primarySwatch: Colors.blue),
-        home: ShowListScreen(), // The screen that uses both blocs
+        home: ShowListScreen(),
       ),
     );
   }

@@ -213,7 +213,7 @@ class _EventCardWidgetState extends State<EventCardWidget>
                                           const Icon(
                                             Icons.location_on,
                                             size: 25,
-                                            color: Colors.blue,
+                                            color: Colors.teal,
                                           ),
                                           const SizedBox(width: 1),
                                           Text(show.venue),
