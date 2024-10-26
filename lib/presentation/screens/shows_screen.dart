@@ -23,11 +23,10 @@ class _ShowListScreenState extends State<ShowListScreen> {
     return FloatingBottomNavBar(
       width: MediaQuery.of(context).size.width * .9,
       children: [
-        _buildMainContent(), // Main content wrapped in a function
+        _buildMainContent(),
         const Bookmarks(),
-           const NotificationsScreen(),
+        const NotificationsScreen(),
         const ProfileScreen(),
-     
       ],
     );
   }
@@ -35,6 +34,7 @@ class _ShowListScreenState extends State<ShowListScreen> {
   Widget _buildMainContent() {
     return Scaffold(
       body: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
             floating: true,
