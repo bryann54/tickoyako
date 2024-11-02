@@ -36,8 +36,17 @@ const eng = 'English';
 const email_txt = 'user@gmail.com';
 const user_name = 'User name';
 const apply = 'Apply';
+const done='Done';
+const or_text= 'Or Signup With';
+const next ='Next';
+const skip ='Skip';
 const get_started = 'Get Started';
-const welcome_text = 'Welcome Back';
+const get_started_txt = 'Let\'s Get Started';
+const welcome_text = 'Welcome Back!';
+const welcome=
+    'Log in to access your account and explore our amazing features';
+const get_stated = 'Create an account to start your journey with us';
+
 const login='Login';
 const signup = 'Sign Up';
 const password = 'Password';
