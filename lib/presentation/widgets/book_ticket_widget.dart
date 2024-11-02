@@ -48,31 +48,8 @@ class BookTicketWidget extends StatelessWidget {
             foregroundColor: Colors.white,
             backgroundColor: Colors.transparent,
             padding: const EdgeInsets.symmetric(vertical: 16),
-            decoration: BoxDecoration(
+            shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
-              gradient: LinearGradient(
-                colors: [Colors.blueGrey.shade900, Colors.lightBlue.shade900],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
-            child:const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children:  [
-                Icon(
-                  Icons.confirmation_number,
-                  color: Colors.white,
-                ),
-                SizedBox(width: 8),
-                Text(
-                  book_ticket,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
-              ],
             ),
           ),
         ),
