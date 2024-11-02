@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tickoyako/data/models/show_model.dart';
-import 'package:tickoyako/presentation/widgets/custom_snackbar_widget.dart';
+import 'package:tickoyako/core/commons/custom_snackbar_widget.dart';
 import 'package:tickoyako/presentation/widgets/theater_seating_layout.dart';
 
 class SeatSelectionScreen extends StatefulWidget {

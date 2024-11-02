@@ -7,7 +7,7 @@ import 'package:tickoyako/presentation/features/bookmark/presentation/bloc/bookm
 import 'package:tickoyako/presentation/features/bookmark/presentation/bloc/bookmark_event.dart';
 import 'package:tickoyako/presentation/screens/seat_selection.dart';
 import 'package:tickoyako/presentation/widgets/book_ticket_widget.dart';
-import 'package:tickoyako/presentation/widgets/custom_snackbar_widget.dart';
+import 'package:tickoyako/core/commons/custom_snackbar_widget.dart';
 
 class EventDetails extends StatefulWidget {
   final ShowModel show;

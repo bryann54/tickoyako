@@ -7,8 +7,8 @@ import 'package:tickoyako/presentation/features/bookmark/presentation/pages/book
 import 'package:tickoyako/presentation/features/notifications/presentation/pages/notifications_screen.dart';
 import 'package:tickoyako/presentation/features/profile/presentation/pages/profile_screen.dart';
 import 'package:tickoyako/presentation/widgets/event_card_widget.dart';
-import 'package:tickoyako/presentation/widgets/floating_bottom_nav_bar.dart';
-import 'package:tickoyako/presentation/widgets/search_bar_widget.dart';
+import 'package:tickoyako/core/commons/floating_bottom_nav_bar.dart';
+import 'package:tickoyako/core/commons/search_bar_widget.dart';
 
 class ShowListScreen extends StatefulWidget {
   const ShowListScreen({super.key});
