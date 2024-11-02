@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:tickoyako/core/strings.dart';
+import 'package:tickoyako/data/models/show_model.dart';
 import 'package:tickoyako/presentation/widgets/payment_modal.dart';
 
 class BookTicketWidget extends StatelessWidget {
-  const BookTicketWidget({super.key});
+  const BookTicketWidget({super.key, required this.showModel});
+   final ShowModel showModel;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class BookTicketWidget extends StatelessWidget {
               barrierColor: Colors.black.withOpacity(0.5),
               transitionDuration: const Duration(milliseconds: 700),
               pageBuilder: (context, animation, secondaryAnimation) {
-                return const PaymentModal();
+               return PaymentModal(showModel: showModel);
               },
               transitionBuilder:
                   (context, animation, secondaryAnimation, child) {

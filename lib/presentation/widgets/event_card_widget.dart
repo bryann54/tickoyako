@@ -76,6 +76,7 @@ class _EventCardWidgetState extends State<EventCardWidget>
               width: double.infinity,
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey.shade400),
+                color: const Color.fromARGB(111, 158, 158, 158).withOpacity(.2),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.1),
