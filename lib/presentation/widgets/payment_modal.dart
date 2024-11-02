@@ -131,7 +131,7 @@ class _PaymentModalState extends State<PaymentModal> {
             letterSpacing: 0.5,
             shadows: [
               Shadow(
-                color: Colors.white.withOpacity(0.5),
+                color: Colors.teal.withOpacity(0.9),
                 blurRadius: 2,
               ),
             ],
