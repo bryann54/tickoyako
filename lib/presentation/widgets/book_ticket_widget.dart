@@ -5,14 +5,20 @@ import 'package:tickoyako/presentation/widgets/payment_modal.dart';
 
 class BookTicketWidget extends StatelessWidget {
   const BookTicketWidget({super.key, required this.showModel});
-   final ShowModel showModel;
+  final ShowModel showModel;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Material(
-        elevation: 5,
-        borderRadius: BorderRadius.circular(10),
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.blueGrey.shade900, Colors.lightBlue.shade900],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+          borderRadius: BorderRadius.circular(10),
+        ),
         child: ElevatedButton.icon(
           icon: const Icon(Icons.confirmation_number),
           label: const Text(book_ticket),
@@ -24,7 +30,7 @@ class BookTicketWidget extends StatelessWidget {
               barrierColor: Colors.black.withOpacity(0.5),
               transitionDuration: const Duration(milliseconds: 700),
               pageBuilder: (context, animation, secondaryAnimation) {
-               return PaymentModal(showModel: showModel);
+                return PaymentModal(showModel: showModel);
               },
               transitionBuilder:
                   (context, animation, secondaryAnimation, child) {
@@ -40,7 +46,7 @@ class BookTicketWidget extends StatelessWidget {
           },
           style: ElevatedButton.styleFrom(
             foregroundColor: Colors.white,
-            backgroundColor: Colors.blue,
+            backgroundColor: Colors.transparent,
             padding: const EdgeInsets.symmetric(vertical: 16),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
