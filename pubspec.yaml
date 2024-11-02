@@ -27,6 +27,8 @@ dependencies:
   floating_frosted_bottom_bar: ^0.0.1
   flutter_floating_bottom_bar: ^1.2.1+1
   provider: ^6.1.1 
+  smooth_page_indicator: ^1.0.0+2
+  lottie: ^2.7.0
 
 dev_dependencies:
   flutter_test:
@@ -41,6 +43,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/
 
 flutter_icons:
   android: "launcher_icon"

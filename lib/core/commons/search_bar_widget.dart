@@ -66,10 +66,10 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
               color: Colors.teal[50],
               borderRadius: BorderRadius.circular(30),
               boxShadow: [
-                BoxShadow(
+                const BoxShadow(
                   color: Colors.black12,
                   blurRadius: 10,
-                  offset: const Offset(0, 3),
+                  offset: Offset(0, 3),
                 ),
               ],
             ),
@@ -99,7 +99,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
                           setState(() {
                             _searchController.clear();
                           });
-                          context.read<ShowsBloc>().add(SearchShows(''));
+                          context.read<ShowsBloc>().add(const SearchShows(''));
                         },
                       )
                     : null,
@@ -122,10 +122,10 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
                   : Colors.teal[50],
               borderRadius: BorderRadius.circular(8),
               boxShadow: [
-                BoxShadow(
+                const BoxShadow(
                   color: Colors.black12,
                   blurRadius: 10,
-                  offset: const Offset(0, 3),
+                  offset: Offset(0, 3),
                 ),
               ],
             ),
