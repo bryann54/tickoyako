@@ -41,7 +41,7 @@ class EventDetails extends StatelessWidget {
                       : AppColors.secondaryColorDark),
               flexibleSpace: FlexibleSpaceBar(
                 title: Text(
-                  'Event Details',
+                 event_details,
                   style: TextStyle(
                       color: isLightMode
                           ? AppColors.secondaryColor
