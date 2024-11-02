@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tickoyako/core/strings.dart';
 import 'package:tickoyako/presentation/features/bookmark/presentation/bloc/bookmark_bloc.dart';
 import 'package:tickoyako/presentation/features/bookmark/presentation/bloc/bookmark_state.dart';
+import 'package:tickoyako/presentation/widgets/bg-widget.dart';
 import 'package:tickoyako/presentation/widgets/event_card_widget.dart';
 
 class Bookmarks extends StatelessWidget {
@@ -18,19 +19,37 @@ class Bookmarks extends StatelessWidget {
         ),
         backgroundColor: Colors.teal,
       ),
-      body: BlocBuilder<BookmarkBloc, BookmarkState>(
-        builder: (context, state) {
-          if (state.bookmarkedShows.isEmpty) {
-            return const Center(child: Text('No bookmarked shows'));
-          }
-          return ListView.builder(
-            itemCount: state.bookmarkedShows.length,
-            itemBuilder: (context, index) {
-              final show = state.bookmarkedShows[index];
-              return EventCardWidget(showModel: show);
-            },
-          );
-        },
+      body: AnimatedBackgroundWidget(
+        child: BlocBuilder<BookmarkBloc, BookmarkState>(
+          builder: (context, state) {
+            if (state.bookmarkedShows.isEmpty) {
+              return  Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 100,
+                      child: Image.asset(
+                        'assets/movie.png',
+                      ),
+                    ),
+                    Text(
+                      no_bookmarks,
+                      style: TextStyle(fontSize: 15),
+                    ),
+                  ],
+                ),
+              );
+            }
+            return ListView.builder(
+              itemCount: state.bookmarkedShows.length,
+              itemBuilder: (context, index) {
+                final show = state.bookmarkedShows[index];
+                return EventCardWidget(showModel: show);
+              },
+            );
+          },
+        ),
       ),
     );
   }
