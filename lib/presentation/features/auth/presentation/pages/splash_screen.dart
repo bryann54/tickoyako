@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tickoyako/core/strings.dart';
 import 'package:tickoyako/presentation/features/auth/presentation/widgets/getstarted_button.dart';
+import 'package:tickoyako/presentation/features/auth/presentation/widgets/splash_bg_widget.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -12,134 +13,239 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
+  late Animation<Offset> _imageSlideAnimation;
+  late Animation<Offset> _textSlideAnimation;
+  late Animation<Offset> _buttonSlideAnimation;
   late Animation<double> _fadeAnimation;
-  late Animation<double> _scaleAnimation;
-  late Animation<Offset> _slideAnimation;
-  bool _isAnimationComplete = false;
+  late Animation<double> _termsAnimation;
 
   @override
   void initState() {
     super.initState();
+
     _controller = AnimationController(
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 3),
       vsync: this,
     );
 
-    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeIn),
-    );
-
-    _scaleAnimation = Tween<double>(begin: 0.5, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOutBack),
-    );
-
-    _slideAnimation = Tween<Offset>(
-      begin: const Offset(1.0, 0.0),
+    // Image slides in from the right
+    _imageSlideAnimation = Tween<Offset>(
+      begin: const Offset(1.0, 0.0), 
       end: Offset.zero,
     ).animate(CurvedAnimation(
       parent: _controller,
-      curve: const Interval(1.0, 1.5, curve: Curves.easeInOut),
+      curve: const Interval(0.0, 0.6, curve: Curves.easeOutBack),
     ));
 
-    // Start the splash animation
-    _controller.forward();
+    // Text slides in from the left
+    _textSlideAnimation = Tween<Offset>(
+      begin: const Offset(-1.0, 0.0), // Start from the left
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _controller,
+      curve: const Interval(0.3, 0.8, curve: Curves.easeOutBack),
+    ));
 
-    // Trigger the button animation after the main splash animation is done
-    _controller.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        setState(() {
-          _isAnimationComplete = true;
-        });
-        // Delay before showing the GetStartedButton
-        Future.delayed(const Duration(milliseconds: 500), () {
-          _controller.forward(); // Restart the controller for button animation
-        });
-      }
-    });
+    // Button slides in from the right
+    _buttonSlideAnimation = Tween<Offset>(
+      begin: const Offset(1.0, 0.0), // Start from the right
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _controller,
+      curve: const Interval(0.5, 1.0, curve: Curves.easeOutBack),
+    ));
+
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.0, 0.8, curve: Curves.easeIn),
+      ),
+    );
+
+    _termsAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.7, 1.0, curve: Curves.easeIn),
+      ),
+    );
+
+    _controller.forward();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          // Base gradient background
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Colors.teal.shade900,
+                  Colors.teal.shade800,
+                ],
+              ),
+            ),
+          ),
+
+          // Animated background
+          AnimatedBackground(controller: _controller),
+
+          // Content
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Spacer(flex: 2),
+
+                  // Animated Image
+                  SlideTransition(
+                    position: _imageSlideAnimation,
+                    child: FadeTransition(
+                      opacity: _fadeAnimation,
+                      child: Container(
+                        height: 250,
+                        width: 250,
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              blurRadius: 20,
+                              offset: const Offset(0, 10),
+                            ),
+                          ],
+                        ),
+                        child: Image.asset(
+                          'assets/splash.png',
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 40),
+
+                  // Animated Text
+                  SlideTransition(
+                    position: _textSlideAnimation,
+                    child: FadeTransition(
+                      opacity: _fadeAnimation,
+                      child: Column(
+                        children: [
+                          _buildAnimatedText(
+                            splash1,
+                            fontSize: 32,
+                            fontWeight: FontWeight.w800,
+                          ),
+                          const SizedBox(height: 16),
+                          _buildAnimatedText(
+                            splash2,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          const SizedBox(height: 12),
+                          _buildAnimatedText(
+                            splash3,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 60),
+
+                  // Animated Button
+                  SlideTransition(
+                    position: _buttonSlideAnimation,
+                    child: FadeTransition(
+                      opacity: _fadeAnimation,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              blurRadius: 15,
+                              offset: const Offset(0, 8),
+                            ),
+                          ],
+                        ),
+                        child: const GetstartedButton(),
+                      ),
+                    ),
+                  ),
+
+                  const Spacer(),
+
+                  // Terms and Conditions
+                  FadeTransition(
+                    opacity: _termsAnimation,
+                    child: const Padding(
+                      padding: EdgeInsets.only(bottom: 24.0),
+                      child: Text(
+                        'Terms & conditions apply',
+                        style: TextStyle(
+                          color: Colors.white70,
+                          fontSize: 14,
+                          letterSpacing: 0.5,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildAnimatedText(
+    String text, {
+    required double fontSize,
+    required FontWeight fontWeight,
+  }) {
+    return ShaderMask(
+      shaderCallback: (bounds) => LinearGradient(
+        colors: [
+          Colors.white,
+          Colors.white.withOpacity(0.9),
+        ],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      ).createShader(bounds),
+      child: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+          letterSpacing: 0.5,
+          height: 1.2,
+          color: Colors.white,
+          shadows: [
+            Shadow(
+              color: Colors.black.withOpacity(0.3),
+              offset: const Offset(2, 2),
+              blurRadius: 4,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   @override
   void dispose() {
     _controller.dispose();
     super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Colors.teal.shade700, Colors.teal.shade300],
-          ),
-        ),
-        child: Center(
-          child: AnimatedBuilder(
-            animation: _controller,
-            builder: (context, child) {
-              return FadeTransition(
-                opacity: _fadeAnimation,
-                child: ScaleTransition(
-                  scale: _scaleAnimation,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Spacer(flex: 2),
-                      const Icon(
-                        Icons.event_seat,
-                        size: 100,
-                        color: Colors.white,
-                      ),
-                      const SizedBox(height: 20),
-                      ShaderMask(
-                        shaderCallback: (bounds) => const LinearGradient(
-                          colors: [Colors.white, Colors.tealAccent],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ).createShader(bounds),
-                        child: const Text(
-                          tittle,
-                          style: TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      const Spacer(flex: 1),
-                      // Add smooth SlideTransition for the GetstartedButton
-                      if (_isAnimationComplete)
-                        SlideTransition(
-                          position: _slideAnimation,
-                          child: FadeTransition(
-                            opacity:
-                                Tween<double>(begin: 0.0, end: 1.0).animate(
-                              CurvedAnimation(
-                                parent: _controller,
-                                curve: const Interval(0.0, 1.0,
-                                    curve: Curves.easeIn),
-                              ),
-                            ),
-                            child: const GetstartedButton(),
-                          ),
-                        ),
-                      const SizedBox(height: 120),
-                          const  Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                                                      children: [Text('terms & conditions apply')],
-                                                    ),
-                            )
-                    ],
-                  ),
-                ),
-              );
-            },
-          ),
-        ),
-      ),
-    );
   }
 }

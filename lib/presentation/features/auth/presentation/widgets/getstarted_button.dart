@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tickoyako/core/colors.dart';
 import 'package:tickoyako/core/strings.dart';
-import 'package:tickoyako/presentation/screens/shows_screen.dart';
+import 'package:tickoyako/presentation/features/auth/presentation/pages/auth_screen.dart';
 
 class GetstartedButton extends StatefulWidget {
   const GetstartedButton({super.key});
@@ -10,62 +10,11 @@ class GetstartedButton extends StatefulWidget {
   State<GetstartedButton> createState() => _GetstartedButtonState();
 }
 
-class _GetstartedButtonState extends State<GetstartedButton> {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        InkWell(
-          onTap: () {
-            // Navigate to the next screen
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    const ShowListScreen(), // Replace with your actual screen
-              ),
-            );
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: Material(
-              elevation: 5,
-              borderRadius: BorderRadius.circular(10),
-              child: Container(
-                height: 50,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    color: AppColors.background,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Center(
-                    child: Text(
-                  get_started.toUpperCase(),
-                  style: const TextStyle(
-                    color: AppColors.primaryColor,
-                    fontSize: 18,
-                  ),
-                )),
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-}
-
-class AnimatedImage extends StatefulWidget {
-  const AnimatedImage({super.key});
-
-  @override
-  State<AnimatedImage> createState() => _AnimatedImageState();
-}
-
-class _AnimatedImageState extends State<AnimatedImage>
+class _GetstartedButtonState extends State<GetstartedButton>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late Animation<double> _animation;
+  late Animation<double> _scaleAnimation;
+  late Animation<double> _opacityAnimation;
 
   @override
   void initState() {
@@ -73,37 +22,89 @@ class _AnimatedImageState extends State<AnimatedImage>
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1000),
-    )..repeat(reverse: true);
-    _animation = Tween<double>(begin: 1.0, end: 1.1).animate(_controller);
+    );
+
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.05).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    );
+
+    _opacityAnimation = Tween<double>(begin: 1.0, end: 0.8).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    );
+  }
+
+  void _handleTap() async {
+    // Start animation
+    _controller.forward();
+
+    // Wait for animation to complete
+    await Future.delayed(const Duration(milliseconds: 200));
+
+    if (!mounted) return;
+
+    // Navigate with fade transition
+    Navigator.pushReplacement(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            const AuthScreen(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return FadeTransition(
+            opacity: animation,
+            child: child,
+          );
+        },
+        transitionDuration: const Duration(milliseconds: 800),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return ScaleTransition(
-      scale: _animation,
-           child: Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: Material(
-              elevation: 5,
-              borderRadius: BorderRadius.circular(10),
-              child: Container(
-                height: 50,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    color: AppColors.background,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Center(
-                    child: Text(
-                  get_started.toUpperCase(),
-                  style: const TextStyle(
-                    color: AppColors.primaryColor,
-                    fontSize: 18,
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: _handleTap,
+          onTapDown: (_) => _controller.forward(),
+          onTapUp: (_) => _controller.reverse(),
+          onTapCancel: () => _controller.reverse(),
+          child: AnimatedBuilder(
+            animation: _controller,
+            builder: (context, child) {
+              return Transform.scale(
+                scale: _scaleAnimation.value,
+                child: Opacity(
+                  opacity: _opacityAnimation.value,
+                  child: Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Material(
+                      elevation: 5,
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        height: 50,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: AppColors.background,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            get_started.toUpperCase(),
+                            style: const TextStyle(
+                              color: AppColors.primaryColor,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                )),
-              ),
-            ),
+                ),
+              );
+            },
           ),
-      
+        ),
+      ],
     );
   }
 

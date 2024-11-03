@@ -12,8 +12,13 @@ class CustomListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: Icon(icon, color: Colors.teal),
-      title: Text(title),
-      subtitle: Text(subtitle),
+     title: Text(
+        title,
+        style: TextStyle(fontWeight: FontWeight.w500),
+      ),
+      subtitle: Text(subtitle,
+       style: TextStyle(fontWeight: FontWeight.w500),
+      ),
       trailing: const Icon(Icons.chevron_right, color: Colors.teal),
     );
   }

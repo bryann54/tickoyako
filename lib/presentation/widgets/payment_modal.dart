@@ -123,18 +123,27 @@ class _PaymentModalState extends State<PaymentModal> {
           ),
         ),
         const SizedBox(height: 16),
-        Text(
-          payment_details,
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-            color: Colors.teal.shade800,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 0.5,
-            shadows: [
-              Shadow(
-                color: Colors.teal.withOpacity(0.9),
-                blurRadius: 2,
-              ),
-            ],
+       ShaderMask(
+          shaderCallback: (bounds) => LinearGradient(
+             colors: [Colors.teal.shade800, Colors.white],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ).createShader(bounds),
+          child: Text(
+            payment_details,
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 0.5,
+             shadows: [
+                Shadow(
+                  color: Colors.black.withOpacity(0.5),
+                  blurRadius: 4,
+                  offset: Offset(2, 2),
+                ),
+              ],
+
+            ),
           ),
         ),
       ],
@@ -216,7 +225,7 @@ class _PaymentModalState extends State<PaymentModal> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color:  Colors.white.withOpacity(0.5),
+        color:  Colors.white.withOpacity(0.7),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.08),

@@ -6,6 +6,7 @@ import 'package:tickoyako/presentation/features/profile/presentation/widgets/pay
 import 'package:tickoyako/presentation/features/profile/presentation/widgets/profile_app_bar.dart';
 import 'package:tickoyako/presentation/features/profile/presentation/widgets/settings_section.dart';
 import 'package:tickoyako/presentation/features/profile/presentation/widgets/user_details_section.dart';
+import 'package:tickoyako/presentation/widgets/bg-widget.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -14,29 +15,31 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: CustomScrollView(
-        slivers: [
-          ProfileAppBar(),
-          SliverToBoxAdapter(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 10),
-                _buildSectionTitle(context, 'User Details'),
-                UserDetailsSection(),
-                _buildSectionTitle(context, 'Payment Details'),
-                PaymentDetailsSection(),
-                _buildSectionTitle(context, 'Settings'),
-                SettingsSection(),
-                _buildSectionTitle(context, 'Additional Information'),
-                AdditionalInfoSection(),
-                const SizedBox(height: 20),
-                LogOutButton(),
-                const SizedBox(height: 120),
-              ],
+      body: AnimatedBackgroundWidget(
+        child: CustomScrollView(
+          slivers: [
+            ProfileAppBar(),
+            SliverToBoxAdapter(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 10),
+                  _buildSectionTitle(context, 'User Details'),
+                  UserDetailsSection(),
+                  _buildSectionTitle(context, 'Payment Details'),
+                  PaymentDetailsSection(),
+                  _buildSectionTitle(context, 'Settings'),
+                  SettingsSection(),
+                  _buildSectionTitle(context, 'Additional Information'),
+                  AdditionalInfoSection(),
+                  const SizedBox(height: 20),
+                  LogOutButton(),
+                  const SizedBox(height: 120),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

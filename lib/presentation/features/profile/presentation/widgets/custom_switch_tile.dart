@@ -21,7 +21,7 @@ class CustomSwitchTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: Icon(icon, color: Colors.teal),
-      title: Text(title),
+      title: Text(title,style: TextStyle(fontWeight: FontWeight.w500),),
       trailing: Switch(
         value: value,
         onChanged: onChanged,

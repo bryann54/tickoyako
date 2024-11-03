@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tickoyako/core/strings.dart';
+import 'package:tickoyako/presentation/widgets/bg-widget.dart';
 
 class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});
@@ -19,17 +20,19 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         ),
         backgroundColor: Colors.teal,
       ),
-      body: Center(
-        child: Column(mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 100,
-              child: Image.asset(
-                'assets/movie.png',
-              ), 
-            ),
-            Text(no_notification,style: TextStyle(fontSize: 15),),
-          ],
+      body: AnimatedBackgroundWidget(
+        child: Center(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 100,
+                child: Image.asset(
+                  'assets/movie.png',
+                ), 
+              ),
+              Text(no_notification,style: TextStyle(fontSize: 15),),
+            ],
+          ),
         ),
       ),
     );

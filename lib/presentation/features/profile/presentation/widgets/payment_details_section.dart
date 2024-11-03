@@ -15,7 +15,7 @@ class PaymentDetailsSection extends StatelessWidget {
         ),
         child: Card(
           elevation: 0,
-          color: Colors.white,
+           color: Colors.transparent.withOpacity(.1),
           margin: const EdgeInsets.symmetric(horizontal: 5),
           child: Column(
             children: [

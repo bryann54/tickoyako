@@ -4,6 +4,7 @@ import 'package:tickoyako/core/colors.dart';
 import 'custom_list_tile.dart';
 
 class AdditionalInfoSection extends StatelessWidget {
+  const AdditionalInfoSection({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,9 +16,9 @@ class AdditionalInfoSection extends StatelessWidget {
         ),
         child: Card(
           elevation: 0,
-          color: Colors.white,
+         color: Colors.transparent.withOpacity(.1),
           margin: const EdgeInsets.symmetric(horizontal: 5),
-          child: Column(
+          child: const Column(
             children: [
               CustomListTile(Icons.favorite, 'Favorite Events', '5 events'),
               Divider(

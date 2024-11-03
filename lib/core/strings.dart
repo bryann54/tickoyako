@@ -58,3 +58,6 @@ const email_hint='Please enter your email';
 const fullname= 'Full Name';
 const no_notification='No notifications yet..';
 const no_bookmarks='No bookmarks yet...';
+const splash1='With ease & convenience,';
+const splash2 = 'get all your favorite events';
+const splash3 = 'all at one point';

@@ -27,7 +27,7 @@ class _SettingsSectionState extends State<SettingsSection> {
         ),
         child: Card(
           elevation: 0,
-          color: Colors.white,
+           color: Colors.transparent.withOpacity(.1),
           margin: const EdgeInsets.symmetric(horizontal: 2),
           child: Column(
             children: [
@@ -73,7 +73,7 @@ class _SettingsSectionState extends State<SettingsSection> {
               const Divider(
                 color: AppColors.textSecondary,
               ),
-              CustomListTile(Icons.language, lang, eng),
+             const CustomListTile(Icons.language, lang, eng),
             ],
           ),
         ),
