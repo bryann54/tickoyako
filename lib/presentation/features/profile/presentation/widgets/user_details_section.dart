@@ -17,7 +17,7 @@ class UserDetailsSection extends StatelessWidget {
         ),
         child: Card(
           elevation: 0,
-          color: Colors.transparent.withOpacity(.1),
+          color: Colors.grey.withOpacity(.1),
           margin: const EdgeInsets.symmetric(horizontal: 5),
           child: Column(
             children: [

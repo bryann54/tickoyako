@@ -5,7 +5,6 @@ import 'package:tickoyako/presentation/blocs/shows_bloc/shows_bloc.dart';
 import 'package:tickoyako/presentation/blocs/shows_bloc/shows_event.dart';
 import 'package:tickoyako/presentation/features/auth/presentation/pages/splash_screen.dart';
 import 'package:tickoyako/presentation/features/bookmark/presentation/bloc/bookmark_bloc.dart';
-import 'package:tickoyako/presentation/screens/shows_screen.dart';
 
 void main() {
   runApp(TickoyakoApp());

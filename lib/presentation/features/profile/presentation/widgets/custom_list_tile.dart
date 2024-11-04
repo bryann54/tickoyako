@@ -14,10 +14,10 @@ class CustomListTile extends StatelessWidget {
       leading: Icon(icon, color: Colors.teal),
      title: Text(
         title,
-        style: TextStyle(fontWeight: FontWeight.w500),
+        style: const TextStyle(fontWeight: FontWeight.w500),
       ),
       subtitle: Text(subtitle,
-       style: TextStyle(fontWeight: FontWeight.w500),
+       style:const TextStyle(fontWeight: FontWeight.w500),
       ),
       trailing: const Icon(Icons.chevron_right, color: Colors.teal),
     );
